@@ -536,6 +536,79 @@
   .rule-card p strong { color: var(--ink); font-weight: 600; }
   .rule-card p em { font-style: normal; font-weight: 600; color: var(--accent); }
 
+  /* ---------- TABLE OF CONTENTS ---------- */
+  .dispatch { scroll-margin-top: 20px; }
+  .toc {
+    margin-bottom: 56px;
+    padding: 26px 26px 22px;
+    background: var(--paper-card);
+    border: 1px solid var(--rule-soft);
+    border-radius: 20px;
+    box-shadow: var(--shadow-sm);
+  }
+  .toc-head {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 18px;
+  }
+  .toc-group + .toc-group { margin-top: 20px; }
+  .toc-group-label {
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: var(--accent);
+    margin-bottom: 8px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--rule-soft);
+  }
+  .toc a {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    padding: 7px 8px;
+    margin: 0 -8px;
+    border-radius: 9px;
+    text-decoration: none;
+    color: var(--ink);
+    transition: background 0.2s var(--ease), color 0.2s var(--ease);
+  }
+  .toc a:hover { background: var(--paper-deep); color: var(--accent); }
+  .toc-num {
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--accent);
+    flex-shrink: 0;
+    width: 34px;
+    font-variant-numeric: tabular-nums;
+  }
+  .toc-title {
+    font-family: var(--sans);
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    line-height: 1.3;
+  }
+  .toc-dot {
+    flex: 1;
+    border-bottom: 1px dotted var(--rule);
+    margin: 0 4px 4px;
+    min-width: 12px;
+  }
+  .toc-tag {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--ink-soft);
+    flex-shrink: 0;
+    letter-spacing: 0.01em;
+  }
+
   /* ---------- DISCLAIMER ---------- */
   .disclaimer {
     margin-bottom: 52px;
@@ -684,7 +757,47 @@
     <p>This document is for <strong>illustrative and educational purposes only</strong>. Nothing in it constitutes tax, legal, investment, accounting, or financial advice, and it must not be relied upon or used for any purpose other than general illustration. The calculators are simplified models that omit many rules, exceptions, phase-outs, and interactions; their outputs are rough estimates, not projections of any actual outcome. Figures reflect 2026 assumptions that change over time and may be inaccurate or outdated. No accountant–client, attorney–client, or fiduciary relationship is created by using this document. Before acting on anything here, consult a qualified tax professional, attorney, or financial advisor about your specific situation.</p>
   </div>
 
-  <article class="dispatch">
+  <nav class="toc" aria-label="Table of contents">
+    <div class="toc-head">Contents</div>
+
+    <div class="toc-group">
+      <div class="toc-group-label">Income &amp; Investment</div>
+      <a href="#s01"><span class="toc-num">01</span><span class="toc-title">Income Tax, Layered</span><span class="toc-dot"></span><span class="toc-tag">City · State · Federal</span></a>
+      <a href="#s02"><span class="toc-num">02</span><span class="toc-title">Capital Gains &amp; NIIT</span><span class="toc-dot"></span><span class="toc-tag">0 · 15 · 20 + 3.8%</span></a>
+    </div>
+
+    <div class="toc-group">
+      <div class="toc-group-label">Retirement &amp; Education</div>
+      <a href="#s03"><span class="toc-num">03</span><span class="toc-title">Traditional vs. Roth</span><span class="toc-dot"></span><span class="toc-tag">The core decision</span></a>
+      <a href="#s04"><span class="toc-num">04</span><span class="toc-title">The Retirement Stack</span><span class="toc-dot"></span><span class="toc-tag">401(k) · IRA · HSA</span></a>
+      <a href="#s05"><span class="toc-num">05</span><span class="toc-title">The Taxable Brokerage</span><span class="toc-dot"></span><span class="toc-tag">The fourth bucket</span></a>
+      <a href="#s06"><span class="toc-num">06</span><span class="toc-title">Roth Conversion — Fill the Bracket</span><span class="toc-dot"></span><span class="toc-tag">The gap-year move</span></a>
+      <a href="#s07"><span class="toc-num">07</span><span class="toc-title">Social Security &amp; Drawdown Order</span><span class="toc-dot"></span><span class="toc-tag">The income puzzle</span></a>
+      <a href="#s08"><span class="toc-num">08</span><span class="toc-title">529 Education Savings</span><span class="toc-dot"></span><span class="toc-tag">529 · SECURE 2.0</span></a>
+    </div>
+
+    <div class="toc-group">
+      <div class="toc-group-label">Estate &amp; Charitable Vehicles</div>
+      <a href="#s09"><span class="toc-num">09</span><span class="toc-title">Donor Advised Fund</span><span class="toc-dot"></span><span class="toc-tag">DAF</span></a>
+      <a href="#s10"><span class="toc-num">10</span><span class="toc-title">Charitable Remainder Trust</span><span class="toc-dot"></span><span class="toc-tag">CRT</span></a>
+      <a href="#s11"><span class="toc-num">11</span><span class="toc-title">Charitable Lead Trust</span><span class="toc-dot"></span><span class="toc-tag">CLT</span></a>
+      <a href="#s12"><span class="toc-num">12</span><span class="toc-title">Grantor Retained Annuity Trust</span><span class="toc-dot"></span><span class="toc-tag">GRAT</span></a>
+      <a href="#s13"><span class="toc-num">13</span><span class="toc-title">Intentionally Defective Grantor Trust</span><span class="toc-dot"></span><span class="toc-tag">IDGT</span></a>
+      <a href="#s14"><span class="toc-num">14</span><span class="toc-title">Spousal Lifetime Access Trust</span><span class="toc-dot"></span><span class="toc-tag">SLAT</span></a>
+      <a href="#s15"><span class="toc-num">15</span><span class="toc-title">Qualified Personal Residence Trust</span><span class="toc-dot"></span><span class="toc-tag">QPRT</span></a>
+      <a href="#s16"><span class="toc-num">16</span><span class="toc-title">Irrevocable Life Insurance Trust</span><span class="toc-dot"></span><span class="toc-tag">ILIT</span></a>
+      <a href="#s17"><span class="toc-num">17</span><span class="toc-title">Dynasty Trust</span><span class="toc-dot"></span><span class="toc-tag">GST-exempt</span></a>
+    </div>
+
+    <div class="toc-group">
+      <div class="toc-group-label">Reference</div>
+      <a href="#flow"><span class="toc-num">→</span><span class="toc-title">Where Should the Next Dollar Go?</span><span class="toc-dot"></span><span class="toc-tag">Priority order</span></a>
+      <a href="#rules"><span class="toc-num">→</span><span class="toc-title">The Rules That Bite</span><span class="toc-dot"></span><span class="toc-tag">Know these</span></a>
+      <a href="#terms"><span class="toc-num">→</span><span class="toc-title">Glossary</span><span class="toc-dot"></span><span class="toc-tag">Plain English</span></a>
+    </div>
+  </nav>
+
+  <article class="dispatch" id="s01">
     <div class="dispatch-head">
       <span class="folio">№ 01</span>
       <h2 class="vname">Income Tax, Layered</h2>
@@ -796,7 +909,7 @@
 
 
   <!-- ============ 02. CAPITAL GAINS & NIIT ============ -->
-  <article class="dispatch">
+  <article class="dispatch" id="s02">
     <div class="dispatch-head">
       <span class="folio">№ 02</span>
       <h2 class="vname">Capital Gains &amp; NIIT</h2>
@@ -861,7 +974,7 @@
   </article>
 
   <!-- ============ 02. TRADITIONAL vs ROTH ============ -->
-  <article class="dispatch">
+  <article class="dispatch" id="s03">
     <div class="dispatch-head">
       <span class="folio">№ 03</span>
       <h2 class="vname">Traditional vs. Roth</h2>
@@ -918,7 +1031,7 @@
   </article>
 
   <!-- ============ 03. THE RETIREMENT STACK ============ -->
-  <article class="dispatch">
+  <article class="dispatch" id="s04">
     <div class="dispatch-head">
       <span class="folio">№ 04</span>
       <h2 class="vname">The Retirement Stack</h2>
@@ -990,7 +1103,7 @@
 
 
   <!-- ============ 05. TAXABLE BROKERAGE ============ -->
-  <article class="dispatch">
+  <article class="dispatch" id="s05">
     <div class="dispatch-head">
       <span class="folio">№ 05</span>
       <h2 class="vname">The Taxable Brokerage</h2>
@@ -1044,7 +1157,7 @@
 
 
   <!-- ============ 06. ROTH CONVERSION ============ -->
-  <article class="dispatch">
+  <article class="dispatch" id="s06">
     <div class="dispatch-head">
       <span class="folio">№ 06</span>
       <h2 class="vname">Roth Conversion — Fill the Bracket</h2>
@@ -1108,7 +1221,7 @@
 
 
   <!-- ============ 07. SOCIAL SECURITY & DRAWDOWN ============ -->
-  <article class="dispatch">
+  <article class="dispatch" id="s07">
     <div class="dispatch-head">
       <span class="folio">№ 07</span>
       <h2 class="vname">Social Security &amp; Drawdown Order</h2>
@@ -1165,7 +1278,7 @@
   </article>
 
   <!-- ============ 04. 529 EDUCATION ============ -->
-  <article class="dispatch">
+  <article class="dispatch" id="s08">
     <div class="dispatch-head">
       <span class="folio">№ 08</span>
       <h2 class="vname">529 Education Savings</h2>
@@ -1223,7 +1336,7 @@
 
 
   <!-- ============ 01. DAF ============ -->
-  <article class="dispatch">
+  <article class="dispatch" id="s09">
     <div class="dispatch-head">
       <span class="folio">№ 09</span>
       <h2 class="vname">Donor Advised Fund</h2>
@@ -1270,7 +1383,7 @@
   </article>
 
   <!-- ============ 02. CRT ============ -->
-  <article class="dispatch">
+  <article class="dispatch" id="s10">
     <div class="dispatch-head">
       <span class="folio">№ 10</span>
       <h2 class="vname">Charitable Remainder Trust</h2>
@@ -1321,7 +1434,7 @@
   </article>
 
   <!-- ============ 03. CLT ============ -->
-  <article class="dispatch">
+  <article class="dispatch" id="s11">
     <div class="dispatch-head">
       <span class="folio">№ 11</span>
       <h2 class="vname">Charitable Lead Trust</h2>
@@ -1368,7 +1481,7 @@
   </article>
 
   <!-- ============ 04. GRAT ============ -->
-  <article class="dispatch">
+  <article class="dispatch" id="s12">
     <div class="dispatch-head">
       <span class="folio">№ 12</span>
       <h2 class="vname">Grantor Retained Annuity Trust</h2>
@@ -1415,7 +1528,7 @@
   </article>
 
   <!-- ============ 05. IDGT ============ -->
-  <article class="dispatch">
+  <article class="dispatch" id="s13">
     <div class="dispatch-head">
       <span class="folio">№ 13</span>
       <h2 class="vname">Intentionally Defective Grantor Trust</h2>
@@ -1462,7 +1575,7 @@
   </article>
 
   <!-- ============ 06. SLAT ============ -->
-  <article class="dispatch">
+  <article class="dispatch" id="s14">
     <div class="dispatch-head">
       <span class="folio">№ 14</span>
       <h2 class="vname">Spousal Lifetime Access Trust</h2>
@@ -1505,7 +1618,7 @@
   </article>
 
   <!-- ============ 07. QPRT ============ -->
-  <article class="dispatch">
+  <article class="dispatch" id="s15">
     <div class="dispatch-head">
       <span class="folio">№ 15</span>
       <h2 class="vname">Qualified Personal Residence Trust</h2>
@@ -1552,7 +1665,7 @@
   </article>
 
   <!-- ============ 08. ILIT ============ -->
-  <article class="dispatch">
+  <article class="dispatch" id="s16">
     <div class="dispatch-head">
       <span class="folio">№ 16</span>
       <h2 class="vname">Irrevocable Life Insurance Trust</h2>
@@ -1595,7 +1708,7 @@
   </article>
 
   <!-- ============ 09. DYNASTY ============ -->
-  <article class="dispatch">
+  <article class="dispatch" id="s17">
     <div class="dispatch-head">
       <span class="folio">№ 17</span>
       <h2 class="vname">Dynasty Trust</h2>
@@ -1644,7 +1757,7 @@
 
 
   <!-- ============ DECISION FLOWCHART ============ -->
-  <article class="dispatch">
+  <article class="dispatch" id="flow">
     <div class="dispatch-head">
       <span class="folio">FLOW</span>
       <h2 class="vname">Where Should the Next Dollar Go?</h2>
@@ -1707,7 +1820,7 @@
   </article>
 
   <!-- ============ RULES REFERENCE ============ -->
-  <article class="dispatch">
+  <article class="dispatch" id="rules">
     <div class="dispatch-head">
       <span class="folio">RULES</span>
       <h2 class="vname">The Rules That Bite</h2>
@@ -1763,7 +1876,7 @@
 
 
   <!-- ============ GLOSSARY ============ -->
-  <article class="dispatch">
+  <article class="dispatch" id="terms">
     <div class="dispatch-head">
       <span class="folio">TERMS</span>
       <h2 class="vname">Glossary</h2>
