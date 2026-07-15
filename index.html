@@ -1,0 +1,2416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tax &amp; Estate Basics</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #fbfbfd;
+    --paper-deep: #f5f5f7;
+    --paper-card: #ffffff;
+    --ink: #1d1d1f;
+    --ink-soft: #6e6e73;
+    --rule: #d2d2d7;
+    --rule-soft: #e8e8ed;
+    --accent: #0071e3;
+    --accent-soft: #0077ed;
+    --accent-deep: #0058b0;
+    --highlight: #d2e3fb;
+    --shadow-sm: 0 1px 2px rgba(0,0,0,0.04), 0 1px 3px rgba(0,0,0,0.05);
+    --shadow-md: 0 2px 6px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.06);
+    --shadow-lg: 0 4px 12px rgba(0,0,0,0.05), 0 20px 56px rgba(0,0,0,0.09);
+    --ease: cubic-bezier(0.28, 0.11, 0.32, 1);
+    --sans: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+
+  ::selection { background: rgba(0,113,227,0.18); color: var(--ink); }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-optical-sizing: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    line-height: 1.5;
+    min-height: 100vh;
+    letter-spacing: -0.01em;
+  }
+
+  .wrap {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 24px 22px 96px;
+  }
+
+  /* ---------- CONTACT BAR ---------- */
+  .contact-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    padding: 12px 16px;
+    margin-bottom: 40px;
+    background: rgba(255,255,255,0.72);
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    border: 1px solid var(--rule-soft);
+    border-radius: 16px;
+    box-shadow: var(--shadow-sm);
+    flex-wrap: wrap;
+  }
+  .contact-name {
+    font-family: var(--sans);
+    font-weight: 600;
+    font-size: 15px;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+  .contact-actions { display: flex; gap: 8px; }
+  .cbtn {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    text-decoration: none;
+    color: #fff;
+    background: var(--accent);
+    padding: 8px 16px;
+    border-radius: 980px;
+    transition: background 0.25s var(--ease), transform 0.2s var(--ease), box-shadow 0.25s var(--ease);
+  }
+  .cbtn svg { opacity: 0.95; }
+  .cbtn:hover { background: var(--accent-soft); transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,113,227,0.28); }
+  .cbtn:active { transform: translateY(0); background: var(--accent-deep); }
+
+  /* ---------- MASTHEAD ---------- */
+  .masthead {
+    padding: 8px 0 30px;
+    margin-bottom: 40px;
+    border-bottom: 1px solid var(--rule);
+    position: relative;
+  }
+
+  .kicker {
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    text-transform: none;
+    color: var(--ink-soft);
+    margin-bottom: 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .kicker .vol { color: var(--accent); font-weight: 600; }
+
+  h1.title {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: clamp(44px, 10vw, 80px);
+    line-height: 0.96;
+    letter-spacing: -0.03em;
+    font-variation-settings: "SOFT" 40, "opsz" 144;
+  }
+  h1.title em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--accent);
+  }
+
+  .deck {
+    margin-top: 20px;
+    font-family: var(--sans);
+    font-style: normal;
+    font-weight: 400;
+    font-size: 19px;
+    color: var(--ink-soft);
+    letter-spacing: -0.01em;
+    line-height: 1.45;
+    max-width: 560px;
+  }
+
+  /* ---------- PROLOGUE ---------- */
+  .prologue {
+    margin-bottom: 52px;
+    padding: 22px 24px;
+    background: var(--paper-deep);
+    border: 1px solid var(--rule-soft);
+    border-radius: 18px;
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+  }
+  .prologue strong { font-weight: 600; color: var(--ink); }
+  .prologue .num {
+    font-family: var(--sans);
+    font-weight: 600;
+    color: var(--accent);
+  }
+
+  /* ---------- DISPATCH (vehicle card) ---------- */
+  .dispatch {
+    margin-bottom: 64px;
+    opacity: 0;
+    transform: translateY(8px);
+    animation: rise 0.7s ease forwards;
+  }
+  .dispatch:nth-child(1) { animation-delay: 0.05s; }
+  .dispatch:nth-child(2) { animation-delay: 0.10s; }
+  .dispatch:nth-child(3) { animation-delay: 0.15s; }
+  .dispatch:nth-child(4) { animation-delay: 0.20s; }
+  .dispatch:nth-child(5) { animation-delay: 0.25s; }
+  .dispatch:nth-child(6) { animation-delay: 0.30s; }
+  .dispatch:nth-child(7) { animation-delay: 0.35s; }
+  .dispatch:nth-child(8) { animation-delay: 0.40s; }
+  .dispatch:nth-child(9) { animation-delay: 0.45s; }
+  .dispatch:nth-child(10) { animation-delay: 0.50s; }
+  .dispatch:nth-child(11) { animation-delay: 0.55s; }
+
+  @keyframes rise {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .dispatch-head {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    padding-bottom: 12px;
+    margin-bottom: 16px;
+  }
+  .folio {
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--accent);
+    letter-spacing: 0;
+    flex-shrink: 0;
+    font-variant-numeric: tabular-nums;
+  }
+  .vname {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: clamp(24px, 5.5vw, 34px);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    flex: 1;
+  }
+  .acro {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--ink-soft);
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    flex-shrink: 0;
+    text-align: right;
+  }
+
+  .tldr {
+    font-family: var(--sans);
+    font-style: normal;
+    font-size: 17px;
+    line-height: 1.5;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+    margin-bottom: 24px;
+  }
+  .tldr em { font-style: normal; font-weight: 600; color: var(--accent); }
+
+  /* ---------- CALCULATOR ---------- */
+  .calc {
+    background: var(--paper-card);
+    padding: 26px 24px 26px;
+    border: 1px solid var(--rule-soft);
+    border-radius: 20px;
+    position: relative;
+    box-shadow: var(--shadow-md);
+    transition: box-shadow 0.45s var(--ease), transform 0.45s var(--ease);
+  }
+  .calc:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px);
+  }
+  .calc::before {
+    content: "WORKING MATH";
+    position: absolute;
+    top: -9px;
+    left: 20px;
+    background: var(--paper-card);
+    padding: 0 10px;
+    font-family: var(--sans);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: var(--ink-soft);
+  }
+
+  .scenario {
+    font-family: var(--sans);
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    font-style: normal;
+    margin-bottom: 20px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--rule-soft);
+  }
+
+  .controls {
+    display: grid;
+    gap: 18px;
+    margin-bottom: 22px;
+  }
+
+  .ctrl label {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 500;
+    text-transform: none;
+    letter-spacing: -0.01em;
+    color: var(--ink-soft);
+    margin-bottom: 10px;
+  }
+  .ctrl label .val {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--ink);
+    text-transform: none;
+    letter-spacing: -0.01em;
+    font-variant-numeric: tabular-nums;
+  }
+
+  input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 5px;
+    background: var(--rule);
+    border-radius: 3px;
+    outline: none;
+    cursor: pointer;
+    transition: background 0.2s ease;
+  }
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 22px;
+    height: 22px;
+    background: #ffffff;
+    border-radius: 50%;
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.18), 0 2px 8px rgba(0,0,0,0.12), inset 0 0 0 0.5px rgba(0,0,0,0.04);
+    transition: transform 0.18s var(--ease), box-shadow 0.18s var(--ease);
+  }
+  input[type="range"]:hover::-webkit-slider-thumb { transform: scale(1.08); }
+  input[type="range"]:active::-webkit-slider-thumb {
+    transform: scale(1.14);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2), 0 0 0 8px rgba(0,113,227,0.12);
+  }
+  input[type="range"]:focus-visible::-webkit-slider-thumb {
+    box-shadow: 0 1px 3px rgba(0,0,0,0.18), 0 0 0 4px rgba(0,113,227,0.35);
+  }
+  input[type="range"]::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    background: #ffffff;
+    border-radius: 50%;
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.18), 0 2px 8px rgba(0,0,0,0.12);
+    transition: transform 0.18s var(--ease);
+  }
+  input[type="range"]:active::-moz-range-thumb { transform: scale(1.12); }
+
+  .outputs {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2px;
+    padding-top: 20px;
+    border-top: 1px solid var(--rule-soft);
+  }
+  @media (min-width: 480px) {
+    .outputs.cols-2 { grid-template-columns: 1fr 1fr; gap: 2px 24px; }
+  }
+
+  .out-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 8px 0;
+    gap: 12px;
+  }
+  .out-label {
+    font-family: var(--sans);
+    font-size: 14px;
+    font-style: normal;
+    color: var(--ink-soft);
+    line-height: 1.35;
+    letter-spacing: -0.01em;
+  }
+  .out-value {
+    font-family: var(--sans);
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--ink);
+    white-space: nowrap;
+    text-align: right;
+    letter-spacing: -0.01em;
+    font-variant-numeric: tabular-nums;
+  }
+  .out-value.hero {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--accent);
+  }
+  .out-row.hero {
+    margin-top: 8px;
+    padding-top: 16px;
+    border-top: 1px solid var(--rule-soft);
+  }
+  .out-row.hero .out-label { color: var(--ink); font-weight: 500; }
+
+  /* ---------- FIELD NOTE ---------- */
+  .field-note {
+    margin-top: 18px;
+    font-family: var(--sans);
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    letter-spacing: -0.01em;
+    padding: 16px 18px;
+    background: var(--paper-deep);
+    border-radius: 14px;
+  }
+  .field-note::before {
+    content: "Field note  ";
+    font-family: var(--sans);
+    font-size: 12px;
+    letter-spacing: 0;
+    text-transform: none;
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  /* ---------- COLOPHON ---------- */
+  .colophon {
+    margin-top: 56px;
+    padding-top: 28px;
+    border-top: 1px solid var(--rule);
+    font-family: var(--sans);
+    font-style: normal;
+    font-size: 13px;
+    color: var(--ink-soft);
+    line-height: 1.6;
+  }
+  .colophon p { margin-bottom: 8px; }
+
+  /* Decorative ornament */
+  .ornament {
+    text-align: center;
+    margin: 44px 0;
+    color: var(--rule);
+    font-size: 12px;
+    letter-spacing: 0.8em;
+  }
+
+  /* ---------- POLISH: live-value settle + elevation ---------- */
+  .out-value, .ctrl label .val {
+    transition: color 0.25s var(--ease);
+  }
+  .ctrl label .val.flash { color: var(--accent); }
+
+  /* ---------- SEGMENTED TOGGLES (Apple-style control) ---------- */
+  .seg {
+    display: inline-flex;
+    background: var(--paper-deep);
+    border: none;
+    border-radius: 10px;
+    padding: 2px;
+    gap: 2px;
+  }
+  .seg button {
+    font-family: var(--sans);
+    font-size: 12.5px;
+    letter-spacing: -0.01em;
+    text-transform: none;
+    font-weight: 500;
+    color: var(--ink);
+    background: transparent;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.25s var(--ease), color 0.25s var(--ease), box-shadow 0.25s var(--ease);
+    white-space: nowrap;
+  }
+  .seg button:hover { color: var(--accent); }
+  .seg button.on {
+    background: var(--paper-card);
+    color: var(--ink);
+    font-weight: 600;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1), 0 0 0 0.5px rgba(0,0,0,0.04);
+  }
+  .seg-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    margin-bottom: 2px;
+  }
+  .seg-label {
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 500;
+    text-transform: none;
+    letter-spacing: -0.01em;
+    color: var(--ink-soft);
+  }
+  .seg-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; padding-bottom: 2px; }
+  .seg-scroll::-webkit-scrollbar { height: 0; }
+
+  /* ---------- RULES GRID ---------- */
+  .rules-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+  @media (min-width: 560px) {
+    .rules-grid { grid-template-columns: 1fr 1fr; }
+  }
+  .rule-card {
+    background: var(--paper-card);
+    border: 1px solid var(--rule-soft);
+    border-radius: 16px;
+    padding: 20px 20px 18px;
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow 0.4s var(--ease), transform 0.4s var(--ease);
+  }
+  .rule-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+  .rule-tag {
+    display: inline-block;
+    font-family: var(--sans);
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--accent);
+    background: rgba(0,113,227,0.09);
+    padding: 3px 9px;
+    border-radius: 980px;
+    margin-bottom: 12px;
+  }
+  .rule-card h3 {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 19px;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    margin-bottom: 8px;
+    color: var(--ink);
+  }
+  .rule-card p {
+    font-family: var(--sans);
+    font-size: 13.5px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    letter-spacing: -0.01em;
+  }
+  .rule-card p strong { color: var(--ink); font-weight: 600; }
+  .rule-card p em { font-style: normal; font-weight: 600; color: var(--accent); }
+
+  /* ---------- DISCLAIMER ---------- */
+  .disclaimer {
+    margin-bottom: 52px;
+    padding: 20px 22px;
+    background: #fff9ec;
+    border: 1px solid #f0e3c4;
+    border-radius: 16px;
+  }
+  .disclaimer-label {
+    display: inline-block;
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #8a6d1f;
+    margin-bottom: 8px;
+  }
+  .disclaimer p {
+    font-family: var(--sans);
+    font-size: 13px;
+    line-height: 1.6;
+    color: #6b5a2e;
+    letter-spacing: -0.005em;
+  }
+  .disclaimer p strong { font-weight: 600; color: #52441f; }
+
+  /* ---------- FLOWCHART ---------- */
+  .flow { display: flex; flex-direction: column; gap: 0; }
+  .flow-step {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 16px 0;
+    position: relative;
+  }
+  .flow-step:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    left: 17px; top: 44px; bottom: -4px;
+    width: 2px;
+    background: var(--rule-soft);
+  }
+  .flow-num {
+    flex-shrink: 0;
+    width: 36px; height: 36px;
+    display: flex; align-items: center; justify-content: center;
+    background: var(--accent);
+    color: #fff;
+    border-radius: 50%;
+    font-family: var(--sans);
+    font-weight: 600;
+    font-size: 15px;
+    box-shadow: var(--shadow-sm);
+    position: relative;
+    z-index: 1;
+  }
+  .flow-body h3 {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 18px;
+    letter-spacing: -0.02em;
+    margin-bottom: 3px;
+    color: var(--ink);
+  }
+  .flow-body p {
+    font-family: var(--sans);
+    font-size: 13.5px;
+    line-height: 1.5;
+    color: var(--ink-soft);
+    letter-spacing: -0.01em;
+  }
+
+  /* ---------- GLOSSARY ---------- */
+  .gloss {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  @media (min-width: 560px) {
+    .gloss { grid-template-columns: 1fr 1fr; gap: 0 32px; }
+  }
+  .gloss-item {
+    padding: 13px 0;
+    border-bottom: 1px solid var(--rule-soft);
+  }
+  .gloss-item dt {
+    font-family: var(--sans);
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--accent);
+    letter-spacing: -0.01em;
+    margin-bottom: 3px;
+  }
+  .gloss-item dd {
+    font-family: var(--sans);
+    font-size: 13.5px;
+    line-height: 1.5;
+    color: var(--ink-soft);
+    letter-spacing: -0.01em;
+  }
+  .gloss-item dd em { font-style: normal; font-weight: 600; color: var(--ink); }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <nav class="contact-bar">
+    <span class="contact-name">Peter Nelson</span>
+    <div class="contact-actions">
+      <a class="cbtn" href="https://www.linkedin.com/in/ponelson/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.8 0 0 .78 0 1.73v20.53C0 23.22.8 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.74V1.73C24 .78 23.2 0 22.22 0z"/></svg>
+        LinkedIn
+      </a>
+      <a class="cbtn" href="mailto:ponelson@gmail.com">
+        <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M12 12.71 1.2 5.4A2 2 0 0 1 3 4h18a2 2 0 0 1 1.8 1.4L12 12.71zM12 14.9 22.94 7.5c.04.16.06.33.06.5v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8c0-.17.02-.34.06-.5L12 14.9z"/></svg>
+        Email
+      </a>
+    </div>
+  </nav>
+
+  <header class="masthead">
+    <div class="kicker">
+      <span><span class="vol">A PRACTICAL PRIMER</span></span>
+      <span>2026 EDITION</span>
+    </div>
+    <h1 class="title">Tax &amp; Estate<br><em>Basics</em></h1>
+    <p class="deck">Working math for the structures that move income and wealth through the tax code — federal, state, and city, with every lever exposed.</p>
+  </header>
+
+  <div class="prologue">
+    For 2026, the federal estate &amp; gift exemption sits at <span class="num">$15M</span> per individual / <span class="num">$30M</span> per couple, indexed and no longer sun-setting after OBBBA. The top transfer-tax rate remains <span class="num">40%</span>; the top federal income rate is <span class="num">37%</span>. Annual gift exclusion: <span class="num">$19,000</span> per recipient. The SALT deduction cap is now <span class="num">$40,400</span>, phasing down above ~$505K. Adjust the sliders below; the math is live.
+  </div>
+
+  <div class="disclaimer">
+    <span class="disclaimer-label">Important — Not Tax Advice</span>
+    <p>This document is for <strong>illustrative and educational purposes only</strong>. Nothing in it constitutes tax, legal, investment, accounting, or financial advice, and it must not be relied upon or used for any purpose other than general illustration. The calculators are simplified models that omit many rules, exceptions, phase-outs, and interactions; their outputs are rough estimates, not projections of any actual outcome. Figures reflect 2026 assumptions that change over time and may be inaccurate or outdated. No accountant–client, attorney–client, or fiduciary relationship is created by using this document. Before acting on anything here, consult a qualified tax professional, attorney, or financial advisor about your specific situation.</p>
+  </div>
+
+  <article class="dispatch">
+    <div class="dispatch-head">
+      <span class="folio">№ 01</span>
+      <h2 class="vname">Income Tax, Layered</h2>
+      <span class="acro">CITY · STATE · FEDERAL</span>
+    </div>
+    <p class="tldr">Estate vehicles move <em>capital</em>. This moves <em>income</em>. Stack the three layers of tax — federal, state, city — then pull each planning lever and watch the wedge open. Where you sit, how you're taxed, and when you recognize income are all choices.</p>
+
+    <div class="calc">
+      <p class="scenario">A household with ordinary income decides where to be domiciled and which planning levers to pull. The three jurisdictions stack; the levers reshape each layer. All math is live and marginal-bracket-accurate for 2026.</p>
+
+      <div class="controls">
+        <div class="ctrl">
+          <label>Ordinary Income <span class="val" id="tax-inc-v">$1,500,000</span></label>
+          <input type="range" id="tax-inc" min="100000" max="10000000" step="50000" value="1500000">
+        </div>
+
+        <!-- FILING STATUS -->
+        <div class="seg-wrap">
+          <span class="seg-label">Filing status</span>
+          <div class="seg-scroll"><div class="seg" id="seg-filing">
+            <button data-v="mfj" class="on">Married / Joint</button>
+            <button data-v="single">Single</button>
+          </div></div>
+        </div>
+
+        <!-- RESIDENCY: the optionality spine -->
+        <div class="seg-wrap">
+          <span class="seg-label">Residency &amp; domicile</span>
+          <div class="seg-scroll"><div class="seg" id="seg-state">
+            <button data-v="nyc" class="on">NYC</button>
+            <button data-v="ca">California</button>
+            <button data-v="ny">New York (non-city)</button>
+            <button data-v="ma">Massachusetts</button>
+            <button data-v="tx">Texas / FL / WA*</button>
+            <button data-v="wy">Wyoming</button>
+          </div></div>
+        </div>
+
+        <!-- LEVER 1: TIMING / DEFERRAL -->
+        <div class="seg-wrap">
+          <span class="seg-label">Lever 1 — Income timing &amp; deferral</span>
+          <div class="seg-scroll"><div class="seg" id="seg-defer">
+            <button data-v="0" class="on">Recognize now</button>
+            <button data-v="0.15">Defer 15%</button>
+            <button data-v="0.30">Defer 30%</button>
+          </div></div>
+        </div>
+
+        <!-- LEVER 2: ENTITY / CHARACTER -->
+        <div class="seg-wrap">
+          <span class="seg-label">Lever 2 — Character conversion (QBI / cap-gain rate)</span>
+          <div class="seg-scroll"><div class="seg" id="seg-char">
+            <button data-v="0" class="on">All ordinary</button>
+            <button data-v="0.20">20% as QBI/LTCG</button>
+            <button data-v="0.40">40% as QBI/LTCG</button>
+          </div></div>
+        </div>
+
+        <!-- LEVER 3: SALT / PTET -->
+        <div class="seg-wrap">
+          <span class="seg-label">Lever 3 — SALT cap vs. PTET workaround</span>
+          <div class="seg-scroll"><div class="seg" id="seg-salt">
+            <button data-v="cap" class="on">Capped ($40.4K)</button>
+            <button data-v="ptet">PTET (uncapped)</button>
+          </div></div>
+        </div>
+      </div>
+
+      <div class="outputs">
+        <div class="out-row">
+          <span class="out-label">Federal income tax</span>
+          <span class="out-value" id="tax-fed">—</span>
+        </div>
+        <div class="out-row">
+          <span class="out-label">State income tax</span>
+          <span class="out-value" id="tax-state">—</span>
+        </div>
+        <div class="out-row">
+          <span class="out-label">City / local income tax</span>
+          <span class="out-value" id="tax-city">—</span>
+        </div>
+        <div class="out-row">
+          <span class="out-label">SALT federal offset recovered</span>
+          <span class="out-value" id="tax-salt">—</span>
+        </div>
+        <div class="out-row">
+          <span class="out-label">Total all-in tax</span>
+          <span class="out-value" id="tax-total">—</span>
+        </div>
+        <div class="out-row">
+          <span class="out-label">Blended effective rate</span>
+          <span class="out-value" id="tax-eff">—</span>
+        </div>
+        <div class="out-row hero">
+          <span class="out-label">Take-home, after every layer &amp; lever</span>
+          <span class="out-value hero" id="tax-net">—</span>
+        </div>
+      </div>
+
+      <div class="outputs" style="margin-top:14px;">
+        <div class="out-row hero">
+          <span class="out-label">Optionality wedge vs. NYC, all levers idle</span>
+          <span class="out-value hero" id="tax-wedge">—</span>
+        </div>
+      </div>
+    </div>
+    <p class="field-note">Residency is the largest single lever — a genuine domicile change from NYC to a no-tax state can erase the entire state-plus-city stack, but CA and NY audit departures for up to four years and the burden of proof is on you (183-day presence, license, registration, severed ties). The PTET workaround routes state tax through a pass-through entity to sidestep the federal SALT cap; the "convenience of the employer" rule can still tax remote work to a NY employer's state. This is a directional map, not a return — sourcing rules, AMT, NIIT, and phaseouts all bite in the real filing.</p>
+  </article>
+
+
+  <!-- ============ 02. CAPITAL GAINS & NIIT ============ -->
+  <article class="dispatch">
+    <div class="dispatch-head">
+      <span class="folio">№ 02</span>
+      <h2 class="vname">Capital Gains &amp; NIIT</h2>
+      <span class="acro">0 · 15 · 20 + 3.8%</span>
+    </div>
+    <p class="tldr">Hold more than a year and gains get their own <em>preferential</em> 0/15/20% ladder — far below ordinary rates. Hold a year or less and they're taxed like wages. Above the income lines, a 3.8% surtax stacks on top.</p>
+
+    <div class="calc">
+      <p class="scenario">You're selling an appreciated asset. Long-term gains stack on top of your ordinary income and are taxed at the rate matching where they land. Toggle the holding period to see the penalty for selling too soon.</p>
+
+      <div class="controls">
+        <div class="ctrl">
+          <label>Ordinary Income (before the gain) <span class="val" id="cg-ord-v">$250,000</span></label>
+          <input type="range" id="cg-ord" min="0" max="2000000" step="10000" value="250000">
+        </div>
+        <div class="ctrl">
+          <label>Capital Gain Realized <span class="val" id="cg-gain-v">$300,000</span></label>
+          <input type="range" id="cg-gain" min="10000" max="3000000" step="10000" value="300000">
+        </div>
+
+        <div class="seg-wrap">
+          <span class="seg-label">Filing status</span>
+          <div class="seg-scroll"><div class="seg" id="seg-cgfile">
+            <button data-v="mfj" class="on">Married / Joint</button>
+            <button data-v="single">Single</button>
+          </div></div>
+        </div>
+
+        <div class="seg-wrap">
+          <span class="seg-label">Holding period</span>
+          <div class="seg-scroll"><div class="seg" id="seg-cghold">
+            <button data-v="long" class="on">Long-term (&gt;1 yr)</button>
+            <button data-v="short">Short-term (&le;1 yr)</button>
+          </div></div>
+        </div>
+      </div>
+
+      <div class="outputs cols-2">
+        <div class="out-row">
+          <span class="out-label">Marginal rate on the gain</span>
+          <span class="out-value" id="cg-rate">—</span>
+        </div>
+        <div class="out-row">
+          <span class="out-label">Base capital gains tax</span>
+          <span class="out-value" id="cg-base">—</span>
+        </div>
+        <div class="out-row">
+          <span class="out-label">NIIT surtax (3.8%)</span>
+          <span class="out-value" id="cg-niit">—</span>
+        </div>
+        <div class="out-row">
+          <span class="out-label">Federal tax on the gain</span>
+          <span class="out-value" id="cg-total">—</span>
+        </div>
+        <div class="out-row hero">
+          <span class="out-label">Penalty for selling short-term instead</span>
+          <span class="out-value hero" id="cg-penalty">—</span>
+        </div>
+      </div>
+    </div>
+    <p class="field-note">2026 long-term brackets (taxable income): 0% up to $49,450 single / $98,900 joint; 15% to $545,500 / $613,700; 20% above. The 3.8% NIIT hits net investment income once MAGI tops $200K single / $250K joint — and those thresholds are frozen (never indexed), so more people cross them every year. A 20%-bracket gain effectively costs 23.8% federal, plus state. Losses offset gains first, then up to $3,000 against ordinary income, with the rest carried forward — the basis of tax-loss harvesting. Qualified dividends ride the same 0/15/20% ladder.</p>
+  </article>
+
+  <!-- ============ 02. TRADITIONAL vs ROTH ============ -->
+  <article class="dispatch">
+    <div class="dispatch-head">
+      <span class="folio">№ 03</span>
+      <h2 class="vname">Traditional vs. Roth</h2>
+      <span class="acro">THE CORE DECISION</span>
+    </div>
+    <p class="tldr">The whole question in one line: is your tax rate <em>lower now</em> or <em>lower later</em>? Traditional deducts today and taxes the withdrawal; Roth taxes today and never again. Same limits, opposite timing.</p>
+
+    <div class="calc">
+      <p class="scenario">You have a fixed amount of pre-tax income to save this year. Compare funding a Traditional account (deduct now, taxed at withdrawal) against a Roth (no deduction, tax-free at withdrawal) — with the Traditional tax savings invested alongside for a fair fight.</p>
+
+      <div class="controls">
+        <div class="ctrl">
+          <label>Annual Contribution <span class="val" id="tr-contrib-v">$7,500</span></label>
+          <input type="range" id="tr-contrib" min="1000" max="24500" step="500" value="7500">
+        </div>
+        <div class="ctrl">
+          <label>Years Until Withdrawal <span class="val" id="tr-years-v">30</span></label>
+          <input type="range" id="tr-years" min="5" max="45" step="1" value="30">
+        </div>
+        <div class="ctrl">
+          <label>Annual Growth <span class="val" id="tr-grow-v">7.0%</span></label>
+          <input type="range" id="tr-grow" min="3" max="10" step="0.5" value="7">
+        </div>
+        <div class="ctrl">
+          <label>Tax Rate Now <span class="val" id="tr-now-v">32%</span></label>
+          <input type="range" id="tr-now" min="10" max="50" step="1" value="32">
+        </div>
+        <div class="ctrl">
+          <label>Tax Rate at Withdrawal <span class="val" id="tr-later-v">24%</span></label>
+          <input type="range" id="tr-later" min="0" max="50" step="1" value="24">
+        </div>
+      </div>
+
+      <div class="outputs cols-2">
+        <div class="out-row">
+          <span class="out-label">Roth — tax-free at withdrawal</span>
+          <span class="out-value" id="tr-roth">—</span>
+        </div>
+        <div class="out-row">
+          <span class="out-label">Traditional — after withdrawal tax</span>
+          <span class="out-value" id="tr-trad">—</span>
+        </div>
+        <div class="out-row">
+          <span class="out-label">+ Tax savings invested (Traditional)</span>
+          <span class="out-value" id="tr-side">—</span>
+        </div>
+        <div class="out-row hero">
+          <span class="out-label">Winner, after all tax</span>
+          <span class="out-value hero" id="tr-win">—</span>
+        </div>
+      </div>
+    </div>
+    <p class="field-note">In theory, an identical rate now and later makes the two tie exactly — the math is symmetric. In practice the Traditional side pot (the invested tax deduction) sits in a taxable account and loses a little to capital-gains drag, which this model reflects. Roth wins clearly when your future rate is higher, and offers no lifetime RMDs and better treatment for heirs; Traditional wins when you'll drop into a lower bracket in retirement.</p>
+  </article>
+
+  <!-- ============ 03. THE RETIREMENT STACK ============ -->
+  <article class="dispatch">
+    <div class="dispatch-head">
+      <span class="folio">№ 04</span>
+      <h2 class="vname">The Retirement Stack</h2>
+      <span class="acro">401(k) · IRA · HSA</span>
+    </div>
+    <p class="tldr">The order of operations most planners agree on: capture the <em>match</em>, max the <em>HSA</em> (the only triple-tax-free account), then fill IRA and 401(k) room. Here's the 2026 ceiling and what tax-advantaged space you're leaving on the table.</p>
+
+    <div class="calc">
+      <p class="scenario">Set your age and what you're currently saving. The stack shows each account's 2026 limit, your total tax-advantaged capacity, and the unused room that quietly expires on December 31.</p>
+
+      <div class="controls">
+        <div class="ctrl">
+          <label>Currently Saving / Year <span class="val" id="rs-save-v">$20,000</span></label>
+          <input type="range" id="rs-save" min="0" max="70000" step="1000" value="20000">
+        </div>
+        <div class="ctrl">
+          <label>Marginal Tax Rate <span class="val" id="rs-rate-v">32%</span></label>
+          <input type="range" id="rs-rate" min="10" max="50" step="1" value="32">
+        </div>
+
+        <div class="seg-wrap">
+          <span class="seg-label">Age band (sets catch-up limits)</span>
+          <div class="seg-scroll"><div class="seg" id="seg-age">
+            <button data-v="under50" class="on">Under 50</button>
+            <button data-v="50to59">50–59</button>
+            <button data-v="60to63">60–63</button>
+          </div></div>
+        </div>
+
+        <div class="seg-wrap">
+          <span class="seg-label">HSA eligibility (high-deductible plan)</span>
+          <div class="seg-scroll"><div class="seg" id="seg-hsa">
+            <button data-v="none" class="on">No HSA</button>
+            <button data-v="self">Self-only</button>
+            <button data-v="family">Family</button>
+          </div></div>
+        </div>
+      </div>
+
+      <div class="outputs">
+        <div class="out-row">
+          <span class="out-label">401(k) elective deferral limit</span>
+          <span class="out-value" id="rs-401k">—</span>
+        </div>
+        <div class="out-row">
+          <span class="out-label">IRA limit (Traditional or Roth)</span>
+          <span class="out-value" id="rs-ira">—</span>
+        </div>
+        <div class="out-row">
+          <span class="out-label">HSA limit</span>
+          <span class="out-value" id="rs-hsatxt">—</span>
+        </div>
+        <div class="out-row">
+          <span class="out-label">Total tax-advantaged capacity</span>
+          <span class="out-value" id="rs-cap">—</span>
+        </div>
+        <div class="out-row">
+          <span class="out-label">Unused room expiring this year</span>
+          <span class="out-value" id="rs-room">—</span>
+        </div>
+        <div class="out-row hero">
+          <span class="out-label">Tax you'd save by filling the room</span>
+          <span class="out-value hero" id="rs-save-tax">—</span>
+        </div>
+      </div>
+    </div>
+    <p class="field-note">2026 limits: 401(k) $24,500 (+$8,000 catch-up at 50+, or $11,250 at 60–63); IRA $7,500 (+$1,100 at 50+); HSA $4,400 self / $8,750 family (+$1,000 at 55+). New for 2026 under SECURE 2.0: if your prior-year wages topped $150,000, catch-up contributions must go into a Roth. High earners phased out of a direct Roth IRA can still use the backdoor Roth (watch the pro-rata rule) and, in some plans, the mega-backdoor Roth up to the $72,000 total-additions limit.</p>
+  </article>
+
+
+  <!-- ============ 05. TAXABLE BROKERAGE ============ -->
+  <article class="dispatch">
+    <div class="dispatch-head">
+      <span class="folio">№ 05</span>
+      <h2 class="vname">The Taxable Brokerage</h2>
+      <span class="acro">THE FOURTH BUCKET</span>
+    </div>
+    <p class="tldr">The account with no limits, no lockup, and no withdrawal rules — and quietly, real tax advantages: preferential capital-gains rates, tax-loss harvesting, and a full <em>step-up in basis</em> at death that can erase a lifetime of gains for your heirs.</p>
+
+    <div class="calc">
+      <p class="scenario">Compare $1 of growth in a taxable account against a tax-deferred one over time. The taxable account pays a small annual drag on dividends but wins its gains at capital-gains rates — and if held until death, the basis resets and the gain is never taxed at all.</p>
+
+      <div class="controls">
+        <div class="ctrl">
+          <label>Amount Invested <span class="val" id="bk-amt-v">$500,000</span></label>
+          <input type="range" id="bk-amt" min="10000" max="5000000" step="10000" value="500000">
+        </div>
+        <div class="ctrl">
+          <label>Years Held <span class="val" id="bk-years-v">25</span></label>
+          <input type="range" id="bk-years" min="1" max="45" step="1" value="25">
+        </div>
+        <div class="ctrl">
+          <label>Annual Growth <span class="val" id="bk-grow-v">7.0%</span></label>
+          <input type="range" id="bk-grow" min="3" max="10" step="0.5" value="7">
+        </div>
+        <div class="ctrl">
+          <label>Capital Gains Rate at Sale <span class="val" id="bk-cg-v">23.8%</span></label>
+          <input type="range" id="bk-cg" min="0" max="35" step="0.1" value="23.8">
+        </div>
+      </div>
+
+      <div class="outputs cols-2">
+        <div class="out-row">
+          <span class="out-label">Pre-tax value at horizon</span>
+          <span class="out-value" id="bk-pre">—</span>
+        </div>
+        <div class="out-row">
+          <span class="out-label">After-tax if sold</span>
+          <span class="out-value" id="bk-sold">—</span>
+        </div>
+        <div class="out-row">
+          <span class="out-label">Capital gains tax if sold</span>
+          <span class="out-value" id="bk-tax">—</span>
+        </div>
+        <div class="out-row hero">
+          <span class="out-label">If held until death (step-up), heirs receive</span>
+          <span class="out-value hero" id="bk-death">—</span>
+        </div>
+      </div>
+    </div>
+    <p class="field-note">The step-up is the taxable account's hidden superpower: heirs inherit at market value, so the entire lifetime gain escapes income tax (it may still face estate tax above the exemption — that's what the estate vehicles below address). This is the "buy, borrow, die" logic in one line. Live drawbacks: annual tax on dividends and any realized gains, no deferral on the way in. Best used as the flexible bridge account and the place to hold your most-appreciated, most-likely-to-bequeath positions.</p>
+  </article>
+
+
+  <!-- ============ 06. ROTH CONVERSION ============ -->
+  <article class="dispatch">
+    <div class="dispatch-head">
+      <span class="folio">№ 06</span>
+      <h2 class="vname">Roth Conversion — Fill the Bracket</h2>
+      <span class="acro">THE GAP-YEAR MOVE</span>
+    </div>
+    <p class="tldr">In low-income years — early retirement, before RMDs and Social Security start — you can move Traditional money to Roth and pay tax now at a <em>low</em> rate, to avoid a higher rate later. The art is converting <em>just enough</em> to fill your current bracket without spilling into the next.</p>
+
+    <div class="calc">
+      <p class="scenario">You have a Traditional IRA and a lull in income. See how much room is left in your current bracket, the tax cost to convert that much, and what those converted dollars become — tax-free, RMD-free — decades later.</p>
+
+      <div class="controls">
+        <div class="ctrl">
+          <label>Taxable Income This Year <span class="val" id="rc-inc-v">$90,000</span></label>
+          <input type="range" id="rc-inc" min="0" max="800000" step="5000" value="90000">
+        </div>
+        <div class="ctrl">
+          <label>Traditional IRA Balance <span class="val" id="rc-bal-v">$1,000,000</span></label>
+          <input type="range" id="rc-bal" min="50000" max="5000000" step="50000" value="1000000">
+        </div>
+        <div class="ctrl">
+          <label>Years Until Withdrawal <span class="val" id="rc-years-v">25</span></label>
+          <input type="range" id="rc-years" min="1" max="40" step="1" value="25">
+        </div>
+        <div class="ctrl">
+          <label>Annual Growth <span class="val" id="rc-grow-v">7.0%</span></label>
+          <input type="range" id="rc-grow" min="3" max="10" step="0.5" value="7">
+        </div>
+
+        <div class="seg-wrap">
+          <span class="seg-label">Fill up to the top of which bracket?</span>
+          <div class="seg-scroll"><div class="seg" id="seg-rcbr">
+            <button data-v="0.12">12%</button>
+            <button data-v="0.22" class="on">22%</button>
+            <button data-v="0.24">24%</button>
+            <button data-v="0.32">32%</button>
+          </div></div>
+        </div>
+      </div>
+
+      <div class="outputs cols-2">
+        <div class="out-row">
+          <span class="out-label">Room left in target bracket</span>
+          <span class="out-value" id="rc-room">—</span>
+        </div>
+        <div class="out-row">
+          <span class="out-label">Suggested conversion this year</span>
+          <span class="out-value" id="rc-conv">—</span>
+        </div>
+        <div class="out-row">
+          <span class="out-label">Tax due now on the conversion</span>
+          <span class="out-value" id="rc-tax">—</span>
+        </div>
+        <div class="out-row hero">
+          <span class="out-label">Tax-free value of converted dollars</span>
+          <span class="out-value hero" id="rc-fv">—</span>
+        </div>
+      </div>
+    </div>
+    <p class="field-note">Conversions are irreversible (no more recharacterizations) and each has its own 5-year clock. The sweet spot is the gap between retiring and age 73 RMDs: convert enough to smooth your lifetime bracket, shrink future RMDs, and leave heirs a tax-free asset. Watch the ripple effects — a big conversion can raise your Medicare IRMAA premiums two years later, push more of your Social Security into tax, and trigger NIIT. 2026 MFJ bracket tops: 12% $96,950 · 22% $206,700 · 24% $394,600 · 32% $501,050.</p>
+  </article>
+
+
+  <!-- ============ 07. SOCIAL SECURITY & DRAWDOWN ============ -->
+  <article class="dispatch">
+    <div class="dispatch-head">
+      <span class="folio">№ 07</span>
+      <h2 class="vname">Social Security &amp; Drawdown Order</h2>
+      <span class="acro">THE INCOME PUZZLE</span>
+    </div>
+    <p class="tldr">How much of your Social Security is taxed depends on your <em>other</em> income — up to 85% gets pulled in above the thresholds. Which accounts you spend from, and in what order, quietly decides your lifetime tax bill.</p>
+
+    <div class="calc">
+      <p class="scenario">Model a retirement year: your benefit, plus other income (pensions, IRA withdrawals, interest). See how much of the benefit becomes taxable — and why Roth withdrawals, which don't count, are the release valve.</p>
+
+      <div class="controls">
+        <div class="ctrl">
+          <label>Annual Social Security Benefit <span class="val" id="ss-ben-v">$48,000</span></label>
+          <input type="range" id="ss-ben" min="10000" max="60000" step="1000" value="48000">
+        </div>
+        <div class="ctrl">
+          <label>Other Taxable Income <span class="val" id="ss-other-v">$40,000</span></label>
+          <input type="range" id="ss-other" min="0" max="300000" step="5000" value="40000">
+        </div>
+        <div class="ctrl">
+          <label>Tax-Exempt (muni) Interest <span class="val" id="ss-muni-v">$0</span></label>
+          <input type="range" id="ss-muni" min="0" max="100000" step="5000" value="0">
+        </div>
+
+        <div class="seg-wrap">
+          <span class="seg-label">Filing status</span>
+          <div class="seg-scroll"><div class="seg" id="seg-ssfile">
+            <button data-v="mfj" class="on">Married / Joint</button>
+            <button data-v="single">Single</button>
+          </div></div>
+        </div>
+      </div>
+
+      <div class="outputs cols-2">
+        <div class="out-row">
+          <span class="out-label">Provisional income</span>
+          <span class="out-value" id="ss-prov">—</span>
+        </div>
+        <div class="out-row">
+          <span class="out-label">Taxable portion of benefit</span>
+          <span class="out-value" id="ss-taxable">—</span>
+        </div>
+        <div class="out-row">
+          <span class="out-label">Percent of benefit taxed</span>
+          <span class="out-value" id="ss-pct">—</span>
+        </div>
+        <div class="out-row hero">
+          <span class="out-label">Benefit that stays tax-free</span>
+          <span class="out-value hero" id="ss-free">—</span>
+        </div>
+      </div>
+    </div>
+    <p class="field-note">Provisional income = other income + tax-exempt interest + half your benefit. Thresholds (frozen since the 1980s–90s): 50% tier at $25K single / $32K joint, 85% tier at $34K / $44K. The classic drawdown order to smooth lifetime tax: spend <em>taxable</em> accounts first, then <em>tax-deferred</em>, then <em>Roth</em> last — while doing Roth conversions in the low-income gap years. Note muni interest still counts here, so "tax-free" bonds aren't free for this test. QCDs (up to $108K in 2026) and the temporary $6,000 senior deduction can both ease the squeeze.</p>
+  </article>
+
+  <!-- ============ 04. 529 EDUCATION ============ -->
+  <article class="dispatch">
+    <div class="dispatch-head">
+      <span class="folio">№ 08</span>
+      <h2 class="vname">529 Education Savings</h2>
+      <span class="acro">529 · SECURE 2.0</span>
+    </div>
+    <p class="tldr">After-tax in, tax-free growth, tax-free out for education. Many states add a deduction on the way in — and leftover funds are no longer trapped: up to $35,000 can now roll to the beneficiary's Roth IRA.</p>
+
+    <div class="calc">
+      <p class="scenario">You fund a 529 for a child. See the tax-free growth, the value of your state deduction, and — the newer angle — how unused money converts to a retirement head start under the SECURE 2.0 Roth rollover.</p>
+
+      <div class="controls">
+        <div class="ctrl">
+          <label>Annual Contribution <span class="val" id="c5-contrib-v">$10,000</span></label>
+          <input type="range" id="c5-contrib" min="1000" max="38000" step="1000" value="10000">
+        </div>
+        <div class="ctrl">
+          <label>Years of Contribution <span class="val" id="c5-years-v">18</span></label>
+          <input type="range" id="c5-years" min="1" max="18" step="1" value="18">
+        </div>
+        <div class="ctrl">
+          <label>Annual Growth <span class="val" id="c5-grow-v">6.0%</span></label>
+          <input type="range" id="c5-grow" min="3" max="10" step="0.5" value="6">
+        </div>
+        <div class="ctrl">
+          <label>State Tax Deduction Rate <span class="val" id="c5-state-v">6.0%</span></label>
+          <input type="range" id="c5-state" min="0" max="13" step="0.5" value="6">
+        </div>
+      </div>
+
+      <div class="outputs cols-2">
+        <div class="out-row">
+          <span class="out-label">Total contributed</span>
+          <span class="out-value" id="c5-in">—</span>
+        </div>
+        <div class="out-row">
+          <span class="out-label">Balance at year 18</span>
+          <span class="out-value" id="c5-bal">—</span>
+        </div>
+        <div class="out-row">
+          <span class="out-label">Tax-free growth earned</span>
+          <span class="out-value" id="c5-growth">—</span>
+        </div>
+        <div class="out-row">
+          <span class="out-label">Cumulative state deduction value</span>
+          <span class="out-value" id="c5-statev">—</span>
+        </div>
+        <div class="out-row hero">
+          <span class="out-label">If $35K rolls to Roth, value at 65</span>
+          <span class="out-value hero" id="c5-roth">—</span>
+        </div>
+      </div>
+    </div>
+    <p class="field-note">The 529-to-Roth rollover has real guardrails: the account must be 15+ years old, only funds seasoned 5+ years qualify, it's capped at $35,000 lifetime per beneficiary, each year's rollover counts against that year's Roth limit, and the beneficiary needs earned income. But it bypasses Roth income limits entirely — a rare way to fund a high-earning child's Roth. As of 2026, 529s also cover up to $20,000/year of K-12 costs and credentialing programs (CPA, bar, trades). Some states recapture their deduction on rollovers — check yours.</p>
+  </article>
+
+
+  <!-- ============ 01. DAF ============ -->
+  <article class="dispatch">
+    <div class="dispatch-head">
+      <span class="folio">№ 09</span>
+      <h2 class="vname">Donor Advised Fund</h2>
+      <span class="acro">DAF</span>
+    </div>
+    <p class="tldr">Take the full deduction today. Grant the money later, on your own clock, with the assets compounding tax-free in between.</p>
+
+    <div class="calc">
+      <p class="scenario">You contribute appreciated stock to a DAF in a high-income year, then let the balance grow before grant-making.</p>
+      <div class="controls">
+        <div class="ctrl">
+          <label>Contribution <span class="val" id="daf-contrib-v">$1,000,000</span></label>
+          <input type="range" id="daf-contrib" min="100000" max="10000000" step="100000" value="1000000">
+        </div>
+        <div class="ctrl">
+          <label>Marginal Tax Rate <span class="val" id="daf-rate-v">37%</span></label>
+          <input type="range" id="daf-rate" min="20" max="50" step="1" value="37">
+        </div>
+        <div class="ctrl">
+          <label>Years Before Granting <span class="val" id="daf-yrs-v">10</span></label>
+          <input type="range" id="daf-yrs" min="0" max="30" step="1" value="10">
+        </div>
+        <div class="ctrl">
+          <label>Annual Growth <span class="val" id="daf-grow-v">7%</span></label>
+          <input type="range" id="daf-grow" min="0" max="12" step="0.5" value="7">
+        </div>
+      </div>
+      <div class="outputs cols-2">
+        <div class="out-row">
+          <span class="out-label">Immediate tax savings</span>
+          <span class="out-value" id="daf-savings">$370,000</span>
+        </div>
+        <div class="out-row">
+          <span class="out-label">Balance at grant time</span>
+          <span class="out-value" id="daf-future">$1,967,151</span>
+        </div>
+        <div class="out-row hero">
+          <span class="out-label">Total charitable impact unlocked</span>
+          <span class="out-value hero" id="daf-impact">$2,337,151</span>
+        </div>
+      </div>
+    </div>
+    <p class="field-note">A DAF doesn't reduce what charity gets — it reshapes <em>when</em>. The deduction lands in the year you most need it; the grants land when the cause is right.</p>
+  </article>
+
+  <!-- ============ 02. CRT ============ -->
+  <article class="dispatch">
+    <div class="dispatch-head">
+      <span class="folio">№ 10</span>
+      <h2 class="vname">Charitable Remainder Trust</h2>
+      <span class="acro">CRT</span>
+    </div>
+    <p class="tldr">Sell a concentrated, low-basis position without paying capital gains. Receive an income stream for life or a term. Remainder goes to charity.</p>
+
+    <div class="calc">
+      <p class="scenario">You hold appreciated stock and want to diversify without absorbing the tax hit. The trust sells it, reinvests, and pays you.</p>
+      <div class="controls">
+        <div class="ctrl">
+          <label>Asset Value <span class="val" id="crt-val-v">$5,000,000</span></label>
+          <input type="range" id="crt-val" min="500000" max="20000000" step="500000" value="5000000">
+        </div>
+        <div class="ctrl">
+          <label>Cost Basis <span class="val" id="crt-basis-v">$500,000</span></label>
+          <input type="range" id="crt-basis" min="0" max="5000000" step="100000" value="500000">
+        </div>
+        <div class="ctrl">
+          <label>Term (years) <span class="val" id="crt-term-v">20</span></label>
+          <input type="range" id="crt-term" min="5" max="20" step="1" value="20">
+        </div>
+        <div class="ctrl">
+          <label>Annual Payout Rate <span class="val" id="crt-pay-v">5.0%</span></label>
+          <input type="range" id="crt-pay" min="5" max="10" step="0.5" value="5">
+        </div>
+      </div>
+      <div class="outputs cols-2">
+        <div class="out-row">
+          <span class="out-label">Capital gains tax avoided at funding</span>
+          <span class="out-value" id="crt-cgtax">$1,071,000</span>
+        </div>
+        <div class="out-row">
+          <span class="out-label">Year-1 payment to you</span>
+          <span class="out-value" id="crt-pay1">$250,000</span>
+        </div>
+        <div class="out-row">
+          <span class="out-label">Cumulative payments over term</span>
+          <span class="out-value" id="crt-cum">$5,000,000</span>
+        </div>
+        <div class="out-row hero">
+          <span class="out-label">Estimated charitable remainder</span>
+          <span class="out-value hero" id="crt-rem">$3,386,355</span>
+        </div>
+      </div>
+    </div>
+    <p class="field-note">The 10% remainder-interest rule is the cliff: the PV of what charity ultimately receives must be at least 10% of the contribution at funding. Push the payout too high and the IRS disqualifies the trust.</p>
+  </article>
+
+  <!-- ============ 03. CLT ============ -->
+  <article class="dispatch">
+    <div class="dispatch-head">
+      <span class="folio">№ 11</span>
+      <h2 class="vname">Charitable Lead Trust</h2>
+      <span class="acro">CLT</span>
+    </div>
+    <p class="tldr">The mirror image of a CRT — charity gets the annuity stream now, your heirs get the remainder. Best when the §7520 hurdle rate is low.</p>
+
+    <div class="calc">
+      <p class="scenario">You front-load a stream of giving while transferring the eventual remainder to your children at a discounted gift value.</p>
+      <div class="controls">
+        <div class="ctrl">
+          <label>Principal <span class="val" id="clt-prin-v">$10,000,000</span></label>
+          <input type="range" id="clt-prin" min="1000000" max="50000000" step="500000" value="10000000">
+        </div>
+        <div class="ctrl">
+          <label>Term (years) <span class="val" id="clt-term-v">20</span></label>
+          <input type="range" id="clt-term" min="10" max="30" step="1" value="20">
+        </div>
+        <div class="ctrl">
+          <label>§7520 Hurdle Rate <span class="val" id="clt-hurdle-v">5.0%</span></label>
+          <input type="range" id="clt-hurdle" min="2" max="7" step="0.5" value="5">
+        </div>
+        <div class="ctrl">
+          <label>Actual Growth Rate <span class="val" id="clt-grow-v">8.0%</span></label>
+          <input type="range" id="clt-grow" min="2" max="12" step="0.5" value="8">
+        </div>
+      </div>
+      <div class="outputs cols-2">
+        <div class="out-row">
+          <span class="out-label">Annual charitable payment</span>
+          <span class="out-value" id="clt-ann">$802,426</span>
+        </div>
+        <div class="out-row">
+          <span class="out-label">Total to charity over term</span>
+          <span class="out-value" id="clt-tot">$16,048,520</span>
+        </div>
+        <div class="out-row hero">
+          <span class="out-label">Remainder to heirs (gift-tax-free)</span>
+          <span class="out-value hero" id="clt-rem">$10,873,415</span>
+        </div>
+      </div>
+    </div>
+    <p class="field-note">The arbitrage is the gap between the IRS hurdle rate and your actual portfolio return. Every basis point above the §7520 rate compounds into the heirs' remainder, outside the transfer-tax system.</p>
+  </article>
+
+  <!-- ============ 04. GRAT ============ -->
+  <article class="dispatch">
+    <div class="dispatch-head">
+      <span class="folio">№ 12</span>
+      <h2 class="vname">Grantor Retained Annuity Trust</h2>
+      <span class="acro">GRAT</span>
+    </div>
+    <p class="tldr">A short-term bet on appreciation. You get an annuity stream back equal to your contribution; anything above the IRS hurdle passes gift-tax-free.</p>
+
+    <div class="calc">
+      <p class="scenario">You move a pre-catalyst asset (concentrated stock, pre-IPO equity) into a 2-year zeroed-out GRAT.</p>
+      <div class="controls">
+        <div class="ctrl">
+          <label>Contribution <span class="val" id="grat-c-v">$10,000,000</span></label>
+          <input type="range" id="grat-c" min="1000000" max="50000000" step="500000" value="10000000">
+        </div>
+        <div class="ctrl">
+          <label>Term (years) <span class="val" id="grat-t-v">2</span></label>
+          <input type="range" id="grat-t" min="2" max="10" step="1" value="2">
+        </div>
+        <div class="ctrl">
+          <label>§7520 Rate (hurdle) <span class="val" id="grat-r-v">5.0%</span></label>
+          <input type="range" id="grat-r" min="2" max="8" step="0.5" value="5">
+        </div>
+        <div class="ctrl">
+          <label>Asset Growth Rate <span class="val" id="grat-g-v">25%</span></label>
+          <input type="range" id="grat-g" min="0" max="60" step="5" value="25">
+        </div>
+      </div>
+      <div class="outputs cols-2">
+        <div class="out-row">
+          <span class="out-label">Annual annuity back to you</span>
+          <span class="out-value" id="grat-ann">$5,378,049</span>
+        </div>
+        <div class="out-row">
+          <span class="out-label">Exemption used</span>
+          <span class="out-value" id="grat-use">$0</span>
+        </div>
+        <div class="out-row hero">
+          <span class="out-label">Passes to heirs gift-tax-free</span>
+          <span class="out-value hero" id="grat-pass">$3,409,073</span>
+        </div>
+      </div>
+    </div>
+    <p class="field-note">"Zeroed-out" means the PV of what comes back to you equals what went in — the gift, on paper, is zero. If the asset underperforms the hurdle, nothing transfers and you've lost only transaction cost. If you die during the term, assets snap back to your estate.</p>
+  </article>
+
+  <!-- ============ 05. IDGT ============ -->
+  <article class="dispatch">
+    <div class="dispatch-head">
+      <span class="folio">№ 13</span>
+      <h2 class="vname">Intentionally Defective Grantor Trust</h2>
+      <span class="acro">IDGT</span>
+    </div>
+    <p class="tldr">"Defective" for income tax (you keep paying it) but effective for estate tax. Sell appreciating assets to it on a note. Growth above AFR escapes your estate.</p>
+
+    <div class="calc">
+      <p class="scenario">After a 10% seed gift, you sell $10M of an appreciating asset to the trust for a 9-year balloon note at the AFR.</p>
+      <div class="controls">
+        <div class="ctrl">
+          <label>Asset Sold to Trust <span class="val" id="idgt-v-v">$10,000,000</span></label>
+          <input type="range" id="idgt-v" min="1000000" max="50000000" step="500000" value="10000000">
+        </div>
+        <div class="ctrl">
+          <label>Applicable Federal Rate (AFR) <span class="val" id="idgt-a-v">4.5%</span></label>
+          <input type="range" id="idgt-a" min="2" max="7" step="0.25" value="4.5">
+        </div>
+        <div class="ctrl">
+          <label>Asset Growth Rate <span class="val" id="idgt-g-v">10%</span></label>
+          <input type="range" id="idgt-g" min="2" max="20" step="0.5" value="10">
+        </div>
+        <div class="ctrl">
+          <label>Note Term (years) <span class="val" id="idgt-t-v">9</span></label>
+          <input type="range" id="idgt-t" min="3" max="20" step="1" value="9">
+        </div>
+      </div>
+      <div class="outputs cols-2">
+        <div class="out-row">
+          <span class="out-label">Seed gift (exemption used)</span>
+          <span class="out-value" id="idgt-seed">$1,000,000</span>
+        </div>
+        <div class="out-row">
+          <span class="out-label">Asset value at note maturity</span>
+          <span class="out-value" id="idgt-end">$23,579,477</span>
+        </div>
+        <div class="out-row hero">
+          <span class="out-label">Out-of-estate transfer to heirs</span>
+          <span class="out-value hero" id="idgt-net">$8,718,083</span>
+        </div>
+      </div>
+    </div>
+    <p class="field-note">The income tax you keep paying on trust earnings is itself a transfer-tax-free gift — a "tax burn" that bleeds your taxable estate while letting the trust compound on a gross basis. Quiet, mechanical, devastating to the estate-tax bill.</p>
+  </article>
+
+  <!-- ============ 06. SLAT ============ -->
+  <article class="dispatch">
+    <div class="dispatch-head">
+      <span class="folio">№ 14</span>
+      <h2 class="vname">Spousal Lifetime Access Trust</h2>
+      <span class="acro">SLAT</span>
+    </div>
+    <p class="tldr">Lock in today's exemption while preserving indirect access through your spouse. The workhorse vehicle for HNW couples in 2026.</p>
+
+    <div class="calc">
+      <p class="scenario">You use your full $15M exemption to fund a SLAT for the benefit of your spouse and descendants. Assets grow outside your estate.</p>
+      <div class="controls">
+        <div class="ctrl">
+          <label>Gift to SLAT <span class="val" id="slat-g-v">$15,000,000</span></label>
+          <input type="range" id="slat-g" min="1000000" max="30000000" step="500000" value="15000000">
+        </div>
+        <div class="ctrl">
+          <label>Annual Growth Rate <span class="val" id="slat-r-v">6%</span></label>
+          <input type="range" id="slat-r" min="2" max="12" step="0.5" value="6">
+        </div>
+        <div class="ctrl">
+          <label>Years Until Death <span class="val" id="slat-y-v">20</span></label>
+          <input type="range" id="slat-y" min="5" max="40" step="1" value="20">
+        </div>
+      </div>
+      <div class="outputs cols-2">
+        <div class="out-row">
+          <span class="out-label">SLAT value at death</span>
+          <span class="out-value" id="slat-fv">$48,107,452</span>
+        </div>
+        <div class="out-row">
+          <span class="out-label">Appreciation outside estate</span>
+          <span class="out-value" id="slat-app">$33,107,452</span>
+        </div>
+        <div class="out-row hero">
+          <span class="out-label">Estate tax saved @ 40%</span>
+          <span class="out-value hero" id="slat-tax">$19,242,981</span>
+        </div>
+      </div>
+    </div>
+    <p class="field-note">Watch the reciprocal-trust doctrine if both spouses create SLATs for each other — the trusts must differ in real, material ways (terms, trustees, distribution standards), or the IRS unwinds them. Divorce kills the access. So does death of the beneficiary spouse.</p>
+  </article>
+
+  <!-- ============ 07. QPRT ============ -->
+  <article class="dispatch">
+    <div class="dispatch-head">
+      <span class="folio">№ 15</span>
+      <h2 class="vname">Qualified Personal Residence Trust</h2>
+      <span class="acro">QPRT</span>
+    </div>
+    <p class="tldr">Transfer a residence at a discounted gift value by retaining the right to live in it for a term of years.</p>
+
+    <div class="calc">
+      <p class="scenario">You move a Manhattan apartment into a QPRT, retain a 15-year right of occupancy. After the term, it passes to your children.</p>
+      <div class="controls">
+        <div class="ctrl">
+          <label>Home Value <span class="val" id="qprt-v-v">$8,000,000</span></label>
+          <input type="range" id="qprt-v" min="1000000" max="30000000" step="250000" value="8000000">
+        </div>
+        <div class="ctrl">
+          <label>Term (years) <span class="val" id="qprt-t-v">15</span></label>
+          <input type="range" id="qprt-t" min="5" max="25" step="1" value="15">
+        </div>
+        <div class="ctrl">
+          <label>§7520 Rate <span class="val" id="qprt-r-v">5.0%</span></label>
+          <input type="range" id="qprt-r" min="2" max="8" step="0.5" value="5">
+        </div>
+        <div class="ctrl">
+          <label>Property Appreciation <span class="val" id="qprt-g-v">4%</span></label>
+          <input type="range" id="qprt-g" min="0" max="10" step="0.5" value="4">
+        </div>
+      </div>
+      <div class="outputs cols-2">
+        <div class="out-row">
+          <span class="out-label">Discounted gift value</span>
+          <span class="out-value" id="qprt-gift">$3,847,756</span>
+        </div>
+        <div class="out-row">
+          <span class="out-label">Exemption discount captured</span>
+          <span class="out-value" id="qprt-disc">$4,152,244</span>
+        </div>
+        <div class="out-row hero">
+          <span class="out-label">Home value passing to heirs at term-end</span>
+          <span class="out-value hero" id="qprt-end">$14,406,553</span>
+        </div>
+      </div>
+    </div>
+    <p class="field-note">After the term, you must pay fair-market rent if you keep living there. That's a feature — every rent payment further bleeds your taxable estate to your children, who are now the landlords.</p>
+  </article>
+
+  <!-- ============ 08. ILIT ============ -->
+  <article class="dispatch">
+    <div class="dispatch-head">
+      <span class="folio">№ 16</span>
+      <h2 class="vname">Irrevocable Life Insurance Trust</h2>
+      <span class="acro">ILIT</span>
+    </div>
+    <p class="tldr">Hold a life insurance policy outside your estate. The death benefit funds liquidity for estate tax — without itself being taxed.</p>
+
+    <div class="calc">
+      <p class="scenario">Your estate is illiquid (operating business, real estate). The ILIT-owned policy generates cash to pay the estate tax bill without forcing a fire sale.</p>
+      <div class="controls">
+        <div class="ctrl">
+          <label>Policy Face Value <span class="val" id="ilit-v-v">$10,000,000</span></label>
+          <input type="range" id="ilit-v" min="1000000" max="100000000" step="1000000" value="10000000">
+        </div>
+        <div class="ctrl">
+          <label>Annual Premium <span class="val" id="ilit-p-v">$150,000</span></label>
+          <input type="range" id="ilit-p" min="10000" max="2000000" step="10000" value="150000">
+        </div>
+        <div class="ctrl">
+          <label>Years of Premium Payments <span class="val" id="ilit-y-v">20</span></label>
+          <input type="range" id="ilit-y" min="1" max="40" step="1" value="20">
+        </div>
+      </div>
+      <div class="outputs cols-2">
+        <div class="out-row">
+          <span class="out-label">Total premiums paid</span>
+          <span class="out-value" id="ilit-prem">$3,000,000</span>
+        </div>
+        <div class="out-row">
+          <span class="out-label">Estate tax avoided on death benefit</span>
+          <span class="out-value" id="ilit-saved">$4,000,000</span>
+        </div>
+        <div class="out-row hero">
+          <span class="out-label">Net liquidity created for heirs</span>
+          <span class="out-value hero" id="ilit-net">$7,000,000</span>
+        </div>
+      </div>
+    </div>
+    <p class="field-note">Without the ILIT, a $10M death benefit lands inside the estate and gets taxed at 40%. With it, the full benefit passes intact — and arrives as cash, exactly when the IRS comes calling.</p>
+  </article>
+
+  <!-- ============ 09. DYNASTY ============ -->
+  <article class="dispatch">
+    <div class="dispatch-head">
+      <span class="folio">№ 17</span>
+      <h2 class="vname">Dynasty Trust</h2>
+      <span class="acro">GST-EXEMPT</span>
+    </div>
+    <p class="tldr">Fund once with GST exemption. The trust compounds for generations — children, grandchildren, great-grandchildren — without paying transfer tax at each death.</p>
+
+    <div class="calc">
+      <p class="scenario">You fund a perpetual trust in South Dakota or Delaware with your full GST exemption. The math compares this against the same assets surviving repeated generational taxation.</p>
+      <div class="controls">
+        <div class="ctrl">
+          <label>Initial Funding <span class="val" id="dyn-p-v">$15,000,000</span></label>
+          <input type="range" id="dyn-p" min="1000000" max="30000000" step="500000" value="15000000">
+        </div>
+        <div class="ctrl">
+          <label>Annual Growth Rate <span class="val" id="dyn-r-v">6%</span></label>
+          <input type="range" id="dyn-r" min="3" max="10" step="0.5" value="6">
+        </div>
+        <div class="ctrl">
+          <label>Generations <span class="val" id="dyn-g-v">3</span></label>
+          <input type="range" id="dyn-g" min="1" max="5" step="1" value="3">
+        </div>
+        <div class="ctrl">
+          <label>Years per Generation <span class="val" id="dyn-y-v">25</span></label>
+          <input type="range" id="dyn-y" min="20" max="35" step="1" value="25">
+        </div>
+      </div>
+      <div class="outputs cols-2">
+        <div class="out-row">
+          <span class="out-label">Dynasty trust value</span>
+          <span class="out-value" id="dyn-trust">$1,179,232,094</span>
+        </div>
+        <div class="out-row">
+          <span class="out-label">Same assets, taxed each generation</span>
+          <span class="out-value" id="dyn-taxed">$254,914,532</span>
+        </div>
+        <div class="out-row hero">
+          <span class="out-label">Wealth preserved by trust structure</span>
+          <span class="out-value hero" id="dyn-saved">$924,317,562</span>
+        </div>
+      </div>
+    </div>
+    <p class="field-note">Compound interest over a century is the real engine; the trust structure is just the legal shell that lets it run unmolested by transfer tax. South Dakota, Nevada, Delaware, and Alaska allow perpetual duration; Florida caps at 1,000 years.</p>
+  </article>
+
+
+
+  <!-- ============ DECISION FLOWCHART ============ -->
+  <article class="dispatch">
+    <div class="dispatch-head">
+      <span class="folio">FLOW</span>
+      <h2 class="vname">Where Should the Next Dollar Go?</h2>
+      <span class="acro">PRIORITY ORDER</span>
+    </div>
+    <p class="tldr">A rough consensus waterfall for a saved dollar. Not gospel — your situation reorders it — but a sane default that captures free money first and the best tax treatment next.</p>
+
+    <div class="flow">
+      <div class="flow-step">
+        <span class="flow-num">1</span>
+        <div class="flow-body">
+          <h3>401(k) up to the employer match</h3>
+          <p>A 50–100% instant return. Always first — never leave the match on the table.</p>
+        </div>
+      </div>
+      <div class="flow-step">
+        <span class="flow-num">2</span>
+        <div class="flow-body">
+          <h3>Pay off high-interest debt</h3>
+          <p>A guaranteed, tax-free return equal to the interest rate. Credit-card debt beats any investment.</p>
+        </div>
+      </div>
+      <div class="flow-step">
+        <span class="flow-num">3</span>
+        <div class="flow-body">
+          <h3>Max the HSA (if eligible)</h3>
+          <p>The only triple-tax-free account — deduct in, grow free, spend free on medical. A stealth retirement account.</p>
+        </div>
+      </div>
+      <div class="flow-step">
+        <span class="flow-num">4</span>
+        <div class="flow-body">
+          <h3>Max IRA / Roth IRA</h3>
+          <p>Roth if you're below the income limit; backdoor Roth if above. Broad, cheap investment menu.</p>
+        </div>
+      </div>
+      <div class="flow-step">
+        <span class="flow-num">5</span>
+        <div class="flow-body">
+          <h3>Finish maxing the 401(k)</h3>
+          <p>Up to $24,500 (2026). Add the mega-backdoor Roth here if your plan allows after-tax contributions.</p>
+        </div>
+      </div>
+      <div class="flow-step">
+        <span class="flow-num">6</span>
+        <div class="flow-body">
+          <h3>529 for education goals</h3>
+          <p>If you have children and a state deduction, fund it — leftover money can later roll to their Roth.</p>
+        </div>
+      </div>
+      <div class="flow-step">
+        <span class="flow-num">7</span>
+        <div class="flow-body">
+          <h3>Taxable brokerage</h3>
+          <p>Unlimited, flexible, capital-gains rates, and step-up at death. The catch-all for everything above.</p>
+        </div>
+      </div>
+    </div>
+    <p class="field-note">Reorder for your reality: no employer plan skips step 1; a big near-term expense may pull the brokerage up; a high earner already phased out of Roth leans on backdoor and mega-backdoor. The point isn't the exact sequence — it's capturing free money and tax-advantaged space before taxable dollars.</p>
+  </article>
+
+  <!-- ============ RULES REFERENCE ============ -->
+  <article class="dispatch">
+    <div class="dispatch-head">
+      <span class="folio">RULES</span>
+      <h2 class="vname">The Rules That Bite</h2>
+      <span class="acro">KNOW THESE</span>
+    </div>
+    <p class="tldr">The calculators above assume you clear the fine print. These are the rules that most often trip people up — the deadlines, penalties, and clocks that quietly decide whether a strategy works.</p>
+
+    <div class="rules-grid">
+      <div class="rule-card">
+        <span class="rule-tag">RMDs</span>
+        <h3>Required Minimum Distributions</h3>
+        <p>Traditional IRAs and 401(k)s force taxable withdrawals starting at <strong>age 73</strong> (75 for those born 1960+). Miss one and the penalty is 25% of the shortfall (10% if fixed quickly). Roth IRAs have <strong>no lifetime RMDs</strong> — a core reason to hold Roth late in life.</p>
+      </div>
+      <div class="rule-card">
+        <span class="rule-tag">5-YEAR</span>
+        <h3>The Roth 5-Year Rule</h3>
+        <p>Earnings come out tax-free only after the account is <strong>5 years old</strong> and you're 59½. Each Roth <em>conversion</em> starts its own 5-year clock for penalty-free access to the converted principal. Contributions themselves can always be withdrawn tax- and penalty-free.</p>
+      </div>
+      <div class="rule-card">
+        <span class="rule-tag">PENALTY</span>
+        <h3>Early Withdrawal (before 59½)</h3>
+        <p>A <strong>10% penalty</strong> plus ordinary tax on most pre-59½ withdrawals. Exceptions: first home ($10K), qualified education, birth/adoption ($5K), disability, substantial medical, and 72(t) equal payments. The 401(k) "rule of 55" allows penalty-free access if you leave that job at 55+.</p>
+      </div>
+      <div class="rule-card">
+        <span class="rule-tag">PRO-RATA</span>
+        <h3>The Pro-Rata Rule</h3>
+        <p>The silent killer of naive backdoor Roths. If you hold <em>any</em> pre-tax IRA money, a conversion is taxed proportionally across all your IRAs — you can't cherry-pick the after-tax dollars. Clear the decks (roll pre-tax IRAs into a 401(k)) before converting.</p>
+      </div>
+      <div class="rule-card">
+        <span class="rule-tag">STEP-UP</span>
+        <h3>Step-Up in Basis at Death</h3>
+        <p>Appreciated assets held until death get their cost basis <strong>reset to market value</strong> — heirs owe no capital gains on the prior appreciation. This is why some low-basis assets are best <em>held, not gifted</em>, and it interacts directly with the estate vehicles below.</p>
+      </div>
+      <div class="rule-card">
+        <span class="rule-tag">ROTH C-U</span>
+        <h3>Mandatory Roth Catch-Up (2026)</h3>
+        <p>New under SECURE 2.0: if your prior-year wages exceeded <strong>$150,000</strong>, your 50+ catch-up contributions <em>must</em> go into a Roth (after-tax). If your plan offers no Roth option, you may lose catch-up eligibility entirely — check with your administrator.</p>
+      </div>
+      <div class="rule-card">
+        <span class="rule-tag">SALT</span>
+        <h3>SALT Deduction Cap</h3>
+        <p>State and local taxes are federally deductible only up to <strong>$40,400</strong> in 2026, phasing down above ~$505K MAGI to a $10K floor. Pass-through owners can often route around it via a state <strong>PTET</strong> election — modeled in section 01.</p>
+      </div>
+      <div class="rule-card">
+        <span class="rule-tag">GIFT</span>
+        <h3>Annual Gift Exclusion</h3>
+        <p>You can give <strong>$19,000</strong> per recipient in 2026 with no gift-tax filing and no use of your lifetime exemption. 529s allow <strong>5-year front-loading</strong> — up to $95,000 at once per beneficiary ($190,000 per couple) — treated as five years of exclusions.</p>
+      </div>
+    </div>
+    <p class="field-note">Deadlines matter as much as rules: IRA and HSA contributions for a tax year run until the April filing deadline; 401(k) elective deferrals must be made by December 31. Contribution limits and thresholds are indexed and shift annually — these reflect 2026.</p>
+  </article>
+
+
+
+  <!-- ============ GLOSSARY ============ -->
+  <article class="dispatch">
+    <div class="dispatch-head">
+      <span class="folio">TERMS</span>
+      <h2 class="vname">Glossary</h2>
+      <span class="acro">PLAIN ENGLISH</span>
+    </div>
+    <p class="tldr">The acronyms and terms this guide leans on, in one place.</p>
+
+    <div class="gloss">
+      <div class="gloss-item"><dt>AGI</dt><dd>Adjusted Gross Income — total income minus specific "above-the-line" deductions. The starting point for most tax math.</dd></div>
+      <div class="gloss-item"><dt>MAGI</dt><dd>Modified AGI — AGI with certain items added back. Governs phase-outs: Roth eligibility, NIIT, IRMAA, and more.</dd></div>
+      <div class="gloss-item"><dt>Taxable income</dt><dd>AGI minus your standard or itemized deduction. This is the figure the tax brackets actually apply to — not gross income.</dd></div>
+      <div class="gloss-item"><dt>Marginal vs. effective rate</dt><dd>Marginal is the rate on your <em>last</em> dollar; effective is total tax ÷ total income. Effective is always the lower number.</dd></div>
+      <div class="gloss-item"><dt>Cost basis</dt><dd>What you paid for an asset. Gain = sale price − basis. Resets to market value at death (the "step-up").</dd></div>
+      <div class="gloss-item"><dt>NIIT</dt><dd>Net Investment Income Tax — a 3.8% surtax on investment income above $200K/$250K MAGI. Thresholds are frozen.</dd></div>
+      <div class="gloss-item"><dt>RMD</dt><dd>Required Minimum Distribution — the forced, taxable withdrawal from Traditional accounts starting at age 73.</dd></div>
+      <div class="gloss-item"><dt>QCD</dt><dd>Qualified Charitable Distribution — a direct IRA-to-charity gift (up to $108K in 2026) that satisfies your RMD tax-free.</dd></div>
+      <div class="gloss-item"><dt>Provisional income</dt><dd>Other income + tax-exempt interest + half your Social Security. Decides how much of your benefit is taxed.</dd></div>
+      <div class="gloss-item"><dt>PTET</dt><dd>Pass-Through Entity Tax — a state election that routes state tax through a business to sidestep the federal SALT cap.</dd></div>
+      <div class="gloss-item"><dt>SALT</dt><dd>State And Local Tax — the itemized deduction for those taxes, capped at $40,400 in 2026 with a high-income phase-down.</dd></div>
+      <div class="gloss-item"><dt>AFR / §7520 rate</dt><dd>IRS-published interest rates (the §7520 is the "hurdle") used to value annuity, life, and remainder interests in trusts.</dd></div>
+      <div class="gloss-item"><dt>GST</dt><dd>Generation-Skipping Transfer tax — a separate 40% tax on gifts that skip a generation; has its own exemption.</dd></div>
+      <div class="gloss-item"><dt>Backdoor Roth</dt><dd>Contribute to a non-deductible IRA, then convert to Roth — a legal path around the Roth income limit. Mind the pro-rata rule.</dd></div>
+      <div class="gloss-item"><dt>Step-up in basis</dt><dd>At death, an asset's basis resets to market value, erasing the income tax on all prior appreciation for heirs.</dd></div>
+      <div class="gloss-item"><dt>IRMAA</dt><dd>Income-Related Monthly Adjustment Amount — a Medicare premium surcharge triggered by high MAGI two years prior.</dd></div>
+    </div>
+    <p class="field-note">Every dollar figure and threshold in this guide reflects 2026 and is indexed or frozen as noted. Terms are simplified for intuition — the Internal Revenue Code defines each with far more precision.</p>
+  </article>
+
+  <div class="ornament">· · ·</div>
+
+  <footer class="colophon">
+    <p><strong>A field guide, not a plan.</strong> Each of these structures has more nuance than a single slider can capture: GST mechanics, state-trust law, grantor-trust toggles, valuation discounts, the §7520-rate trap, the reciprocal-trust doctrine, the 10% remainder rule, the §2036 string. Real implementation requires a trust attorney and a CPA.</p>
+    <p><strong>The §7520 rate</strong> — the IRS hurdle rate used for valuing annuity, life, and remainder interests — drifts month-to-month with mid-term AFRs. Confirm the current month's rate before modeling anything in earnest.</p>
+    <p><strong>Math is illustrative.</strong> The actuarial calculations underlying real CRTs, CLTs, GRATs, and QPRTs use IRS mortality tables and present-value math that this guide approximates for intuition.</p>
+    <p><strong>The income-tax map</strong> uses 2026 federal brackets (IRS Rev. Proc. 2025-32) and a simplified base-to-top state model; it ignores AMT, NIIT thresholds, sourcing rules, phaseouts, and the audit risk of a contested domicile change. Directional, not a return.</p>
+    <p><strong>Legal disclaimer.</strong> This entire document is provided for illustrative and educational purposes only and does not constitute tax, legal, investment, accounting, or financial advice. It should not be relied upon or used for any purpose other than general illustration. No professional relationship is created by its use. Consult a qualified tax professional, attorney, or financial advisor before making any decision.</p>
+  </footer>
+
+</div>
+
+<script>
+  // ----- Formatters -----
+  const fmt$ = (n) => '$' + Math.round(n).toLocaleString('en-US');
+  const fmtPct = (n, d=0) => n.toFixed(d) + '%';
+
+  // ----- Helper: bind slider to display -----
+  const bind = (id, formatter, callback) => {
+    const el = document.getElementById(id);
+    const out = document.getElementById(id + '-v');
+    const update = () => {
+      const v = parseFloat(el.value);
+      if (out) out.textContent = formatter(v);
+      callback();
+    };
+    el.addEventListener('input', update);
+    return () => parseFloat(el.value);
+  };
+
+  // ============ 01 DAF ============
+  function calcDAF() {
+    const c = parseFloat(document.getElementById('daf-contrib').value);
+    const r = parseFloat(document.getElementById('daf-rate').value) / 100;
+    const y = parseFloat(document.getElementById('daf-yrs').value);
+    const g = parseFloat(document.getElementById('daf-grow').value) / 100;
+    const savings = c * r;
+    const future = c * Math.pow(1 + g, y);
+    document.getElementById('daf-savings').textContent = fmt$(savings);
+    document.getElementById('daf-future').textContent = fmt$(future);
+    document.getElementById('daf-impact').textContent = fmt$(savings + future);
+  }
+  bind('daf-contrib', v => fmt$(v), calcDAF);
+  bind('daf-rate', v => v + '%', calcDAF);
+  bind('daf-yrs', v => v + (v == 1 ? ' year' : ' years'), calcDAF);
+  bind('daf-grow', v => v.toFixed(1) + '%', calcDAF);
+  calcDAF();
+
+  // ============ 02 CRT ============
+  function calcCRT() {
+    const v = parseFloat(document.getElementById('crt-val').value);
+    const b = parseFloat(document.getElementById('crt-basis').value);
+    const t = parseFloat(document.getElementById('crt-term').value);
+    const p = parseFloat(document.getElementById('crt-pay').value) / 100;
+    const cgRate = 0.238; // 20% LTCG + 3.8% NIIT
+    const gain = Math.max(0, v - b);
+    const cgtax = gain * cgRate;
+    const pay1 = v * p;
+    // Simplified CRUT: principal grows at growth rate net of payout
+    const growth = 0.07; // assumed reinvestment
+    let bal = v;
+    let cum = 0;
+    for (let i = 0; i < t; i++) {
+      const pmt = bal * p;
+      cum += pmt;
+      bal = (bal - pmt) * (1 + growth);
+    }
+    document.getElementById('crt-cgtax').textContent = fmt$(cgtax);
+    document.getElementById('crt-pay1').textContent = fmt$(pay1);
+    document.getElementById('crt-cum').textContent = fmt$(cum);
+    document.getElementById('crt-rem').textContent = fmt$(Math.max(0, bal));
+  }
+  bind('crt-val', v => fmt$(v), calcCRT);
+  bind('crt-basis', v => fmt$(v), calcCRT);
+  bind('crt-term', v => v + ' yrs', calcCRT);
+  bind('crt-pay', v => v.toFixed(1) + '%', calcCRT);
+  calcCRT();
+
+  // ============ 03 CLT ============
+  function calcCLT() {
+    const p = parseFloat(document.getElementById('clt-prin').value);
+    const t = parseFloat(document.getElementById('clt-term').value);
+    const h = parseFloat(document.getElementById('clt-hurdle').value) / 100;
+    const g = parseFloat(document.getElementById('clt-grow').value) / 100;
+    // Zeroed-out CLAT: annual annuity = P / annuity factor (using hurdle rate)
+    const af = (1 - Math.pow(1 + h, -t)) / h;
+    const ann = p / af;
+    const totCharity = ann * t;
+    // Remainder: principal grows at actual rate; annuity paid each year
+    let bal = p;
+    for (let i = 0; i < t; i++) {
+      bal = bal * (1 + g) - ann;
+    }
+    document.getElementById('clt-ann').textContent = fmt$(ann);
+    document.getElementById('clt-tot').textContent = fmt$(totCharity);
+    document.getElementById('clt-rem').textContent = fmt$(Math.max(0, bal));
+  }
+  bind('clt-prin', v => fmt$(v), calcCLT);
+  bind('clt-term', v => v + ' yrs', calcCLT);
+  bind('clt-hurdle', v => v.toFixed(1) + '%', calcCLT);
+  bind('clt-grow', v => v.toFixed(1) + '%', calcCLT);
+  calcCLT();
+
+  // ============ 04 GRAT ============
+  function calcGRAT() {
+    const c = parseFloat(document.getElementById('grat-c').value);
+    const t = parseFloat(document.getElementById('grat-t').value);
+    const r = parseFloat(document.getElementById('grat-r').value) / 100;
+    const g = parseFloat(document.getElementById('grat-g').value) / 100;
+    const af = (1 - Math.pow(1 + r, -t)) / r;
+    const ann = c / af;
+    let bal = c;
+    for (let i = 0; i < t; i++) {
+      bal = bal * (1 + g) - ann;
+    }
+    const passed = Math.max(0, bal);
+    document.getElementById('grat-ann').textContent = fmt$(ann);
+    document.getElementById('grat-use').textContent = '$0';
+    document.getElementById('grat-pass').textContent = fmt$(passed);
+  }
+  bind('grat-c', v => fmt$(v), calcGRAT);
+  bind('grat-t', v => v + ' yrs', calcGRAT);
+  bind('grat-r', v => v.toFixed(1) + '%', calcGRAT);
+  bind('grat-g', v => v + '%', calcGRAT);
+  calcGRAT();
+
+  // ============ 05 IDGT ============
+  function calcIDGT() {
+    const v = parseFloat(document.getElementById('idgt-v').value);
+    const a = parseFloat(document.getElementById('idgt-a').value) / 100;
+    const g = parseFloat(document.getElementById('idgt-g').value) / 100;
+    const t = parseFloat(document.getElementById('idgt-t').value);
+    const seed = v * 0.10;
+    // Asset value at maturity (whole trust grew on v + seed)
+    const trustEnd = (v + seed) * Math.pow(1 + g, t);
+    // Interest paid back annually + balloon principal at maturity
+    const intPaid = v * a * t;
+    const balloon = v;
+    // Net to heirs = trust end - principal repayment - interest paid (treating those as estate-included reductions)
+    const netOut = trustEnd - balloon - intPaid;
+    document.getElementById('idgt-seed').textContent = fmt$(seed);
+    document.getElementById('idgt-end').textContent = fmt$(trustEnd);
+    document.getElementById('idgt-net').textContent = fmt$(Math.max(0, netOut));
+  }
+  bind('idgt-v', v => fmt$(v), calcIDGT);
+  bind('idgt-a', v => v.toFixed(2) + '%', calcIDGT);
+  bind('idgt-g', v => v.toFixed(1) + '%', calcIDGT);
+  bind('idgt-t', v => v + ' yrs', calcIDGT);
+  calcIDGT();
+
+  // ============ 06 SLAT ============
+  function calcSLAT() {
+    const g = parseFloat(document.getElementById('slat-g').value);
+    const r = parseFloat(document.getElementById('slat-r').value) / 100;
+    const y = parseFloat(document.getElementById('slat-y').value);
+    const fv = g * Math.pow(1 + r, y);
+    const app = fv - g;
+    const tax = fv * 0.40;
+    document.getElementById('slat-fv').textContent = fmt$(fv);
+    document.getElementById('slat-app').textContent = fmt$(app);
+    document.getElementById('slat-tax').textContent = fmt$(tax);
+  }
+  bind('slat-g', v => fmt$(v), calcSLAT);
+  bind('slat-r', v => v.toFixed(1) + '%', calcSLAT);
+  bind('slat-y', v => v + ' yrs', calcSLAT);
+  calcSLAT();
+
+  // ============ 07 QPRT ============
+  function calcQPRT() {
+    const v = parseFloat(document.getElementById('qprt-v').value);
+    const t = parseFloat(document.getElementById('qprt-t').value);
+    const r = parseFloat(document.getElementById('qprt-r').value) / 100;
+    const g = parseFloat(document.getElementById('qprt-g').value) / 100;
+    // Discounted gift value = PV of remainder interest = V / (1+r)^t (simplified)
+    const giftVal = v / Math.pow(1 + r, t);
+    const discount = v - giftVal;
+    const homeEnd = v * Math.pow(1 + g, t);
+    document.getElementById('qprt-gift').textContent = fmt$(giftVal);
+    document.getElementById('qprt-disc').textContent = fmt$(discount);
+    document.getElementById('qprt-end').textContent = fmt$(homeEnd);
+  }
+  bind('qprt-v', v => fmt$(v), calcQPRT);
+  bind('qprt-t', v => v + ' yrs', calcQPRT);
+  bind('qprt-r', v => v.toFixed(1) + '%', calcQPRT);
+  bind('qprt-g', v => v.toFixed(1) + '%', calcQPRT);
+  calcQPRT();
+
+  // ============ 08 ILIT ============
+  function calcILIT() {
+    const v = parseFloat(document.getElementById('ilit-v').value);
+    const p = parseFloat(document.getElementById('ilit-p').value);
+    const y = parseFloat(document.getElementById('ilit-y').value);
+    const totalPrem = p * y;
+    const saved = v * 0.40;
+    const net = v - totalPrem;
+    document.getElementById('ilit-prem').textContent = fmt$(totalPrem);
+    document.getElementById('ilit-saved').textContent = fmt$(saved);
+    document.getElementById('ilit-net').textContent = fmt$(net);
+  }
+  bind('ilit-v', v => fmt$(v), calcILIT);
+  bind('ilit-p', v => fmt$(v), calcILIT);
+  bind('ilit-y', v => v + ' yrs', calcILIT);
+  calcILIT();
+
+  // ============ 09 DYNASTY ============
+  function calcDyn() {
+    const p = parseFloat(document.getElementById('dyn-p').value);
+    const r = parseFloat(document.getElementById('dyn-r').value) / 100;
+    const g = parseFloat(document.getElementById('dyn-g').value);
+    const y = parseFloat(document.getElementById('dyn-y').value);
+    const totalYears = g * y;
+    const trust = p * Math.pow(1 + r, totalYears);
+    // Taxed path: 40% transfer tax at each generation
+    let taxed = p;
+    for (let i = 0; i < g; i++) {
+      taxed = taxed * Math.pow(1 + r, y);
+      taxed = taxed * 0.60; // 40% transfer tax
+    }
+    document.getElementById('dyn-trust').textContent = fmt$(trust);
+    document.getElementById('dyn-taxed').textContent = fmt$(taxed);
+    document.getElementById('dyn-saved').textContent = fmt$(trust - taxed);
+  }
+  bind('dyn-p', v => fmt$(v), calcDyn);
+  bind('dyn-r', v => v.toFixed(1) + '%', calcDyn);
+  bind('dyn-g', v => v + (v == 1 ? ' generation' : ' generations'), calcDyn);
+  bind('dyn-y', v => v + ' yrs', calcDyn);
+  calcDyn();
+
+  // ============ 10. INCOME TAX OPTIONALITY MAP ============
+  // 2026 federal ordinary brackets (taxable income), per IRS Rev. Proc. 2025-32
+  const FED_2026 = {
+    mfj: { sd: 32200, b: [[0,0.10],[24800,0.12],[105475,0.22],[201050,0.24],[383900,0.32],[487450,0.35],[768700,0.37]] },
+    single: { sd: 16100, b: [[0,0.10],[12400,0.12],[50400,0.22],[105475,0.24],[201775,0.32],[256225,0.35],[640600,0.37]] }
+  };
+  // State models. 'flat' rate or progressive 'b' brackets (single-filer scale, doubled for mfj where noted by widen).
+  // City rate applied to state-taxable income. Figures rounded to 2026 published top-rate behavior.
+  const STATE = {
+    nyc: { name:'NYC',        type:'prog', city:0.03876, top:0.109, kick:1077550, base:0.0685 },
+    ca:  { name:'California',  type:'prog', city:0,       top:0.133, kick:1000000, base:0.093 },
+    ny:  { name:'New York',    type:'prog', city:0,       top:0.109, kick:1077550, base:0.0685 },
+    ma:  { name:'Massachusetts',type:'flat',city:0,       flat:0.05, surTop:0.04, surKick:1083150 },
+    tx:  { name:'No-tax (TX/FL/WA)', type:'none', city:0 },
+    wy:  { name:'Wyoming',     type:'none', city:0 }
+  };
+
+  let TX = { filing:'mfj', state:'nyc', defer:0, char:0, salt:'cap' };
+
+  // Marginal federal tax on a taxable-income figure
+  function fedTax(ti, filing) {
+    const sch = FED_2026[filing].b;
+    let tax = 0;
+    for (let i = 0; i < sch.length; i++) {
+      const lo = sch[i][0];
+      const hi = (i+1 < sch.length) ? sch[i+1][0] : Infinity;
+      if (ti > lo) tax += (Math.min(ti, hi) - lo) * sch[i][1];
+      else break;
+    }
+    return tax;
+  }
+
+  // Simplified progressive state tax: blended ramp from base rate to top rate at the kick threshold.
+  function stateTax(income, st, filing) {
+    if (st.type === 'none') return 0;
+    const widen = filing === 'mfj' ? 2 : 1;
+    if (st.type === 'flat') {
+      let t = income * st.flat;
+      if (st.surTop && income > st.surKick * (widen/2 + 0.5)) t += (income - st.surKick) * st.surTop;
+      return t;
+    }
+    // progressive: base rate on income up to kick, top rate on the excess
+    const kick = st.kick * (filing === 'mfj' ? 2 : 1);
+    if (income <= kick) return income * st.base;
+    return kick * st.base + (income - kick) * st.top;
+  }
+
+  function calcTax() {
+    const gross = parseFloat(document.getElementById('tax-inc').value);
+    const filing = TX.filing;
+    const st = STATE[TX.state];
+
+    // Lever 1 — deferral shrinks currently-recognized income
+    const recognized = gross * (1 - TX.defer);
+    // Lever 2 — character conversion: a slice taxed at preferential 23.8% (LTCG+NIIT) instead of ordinary
+    const prefShare = TX.char;
+    const ordinaryPortion = recognized * (1 - prefShare);
+    const prefPortion = recognized * prefShare;
+
+    // Federal
+    const sd = FED_2026[filing].sd;
+    const fedTaxable = Math.max(0, ordinaryPortion - sd);
+    let fed = fedTax(fedTaxable, filing) + prefPortion * 0.238;
+
+    // State + city operate on recognized income (states largely tax cap gains as ordinary)
+    const stateLiab = stateTax(recognized, st, filing);
+    const cityLiab = recognized * (st.city || 0);
+
+    // Lever 3 — SALT. Capped offset vs. PTET (effectively uncapped state-tax deductibility at top fed rate)
+    const stateAndLocal = stateLiab + cityLiab;
+    let saltDeductible;
+    if (TX.salt === 'ptet') {
+      saltDeductible = stateAndLocal;            // PTET routes around the cap
+    } else {
+      // 2026 cap $40,400, phases down above $505K MAGI at 30c/$ to a $10K floor
+      let cap = 40400;
+      if (recognized > 505000) cap = Math.max(10000, 40400 - (recognized - 505000) * 0.30);
+      saltDeductible = Math.min(stateAndLocal, cap);
+    }
+    const topRate = FED_2026[filing].b[FED_2026[filing].b.length - 1][1];
+    const saltOffset = saltDeductible * topRate;   // value of the federal deduction
+    fed = Math.max(0, fed - saltOffset);
+
+    const total = fed + stateLiab + cityLiab;
+    const eff = total / gross * 100;
+    const net = gross - total;
+
+    document.getElementById('tax-fed').textContent = fmt$(fed);
+    document.getElementById('tax-state').textContent = stateLiab > 0 ? fmt$(stateLiab) : '$0 — no state tax';
+    document.getElementById('tax-city').textContent = cityLiab > 0 ? fmt$(cityLiab) : '$0';
+    document.getElementById('tax-salt').textContent = fmt$(saltOffset);
+    document.getElementById('tax-total').textContent = fmt$(total);
+    document.getElementById('tax-eff').textContent = eff.toFixed(1) + '%';
+    document.getElementById('tax-net').textContent = fmt$(net);
+
+    // Wedge: this take-home vs. baseline NYC, all levers idle, same income/filing
+    const baseTotal = baselineNYC(gross, filing);
+    const wedge = (gross - total) - (gross - baseTotal);
+    const wedgeEl = document.getElementById('tax-wedge');
+    wedgeEl.textContent = (wedge >= 0 ? '+' : '−') + fmt$(Math.abs(wedge)).replace('$','') + ' vs. NYC baseline';
+    wedgeEl.textContent = (wedge >= 0 ? '+' : '−') + '$' + Math.round(Math.abs(wedge)).toLocaleString('en-US');
+  }
+
+  // Baseline: NYC, no levers pulled, capped SALT
+  function baselineNYC(gross, filing) {
+    const st = STATE.nyc;
+    const sd = FED_2026[filing].sd;
+    let fed = fedTax(Math.max(0, gross - sd), filing);
+    const stateLiab = stateTax(gross, st, filing);
+    const cityLiab = gross * st.city;
+    let cap = 40400;
+    if (gross > 505000) cap = Math.max(10000, 40400 - (gross - 505000) * 0.30);
+    const saltDeductible = Math.min(stateLiab + cityLiab, cap);
+    const topRate = FED_2026[filing].b[FED_2026[filing].b.length - 1][1];
+    fed = Math.max(0, fed - saltDeductible * topRate);
+    return fed + stateLiab + cityLiab;
+  }
+
+  // Segmented-toggle wiring
+  function wireSeg(id, key, parse) {
+    const grp = document.getElementById(id);
+    grp.querySelectorAll('button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        grp.querySelectorAll('button').forEach(b => b.classList.remove('on'));
+        btn.classList.add('on');
+        TX[key] = parse ? parse(btn.dataset.v) : btn.dataset.v;
+        calcTax();
+      });
+    });
+  }
+  // Generic single-select segment wirer: calls cb(value) with active-state toggling
+  function wireSegLocal(id, cb) {
+    const grp = document.getElementById(id);
+    if (!grp) return;
+    grp.querySelectorAll('button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        grp.querySelectorAll('button').forEach(b => b.classList.remove('on'));
+        btn.classList.add('on');
+        cb(btn.dataset.v);
+      });
+    });
+  }
+  wireSeg('seg-filing', 'filing');
+  wireSeg('seg-state', 'state');
+  wireSeg('seg-defer', 'defer', parseFloat);
+  wireSeg('seg-char', 'char', parseFloat);
+  wireSeg('seg-salt', 'salt');
+  bind('tax-inc', v => fmt$(v), calcTax);
+  calcTax();
+
+  // ============ 02. TRADITIONAL vs ROTH ============
+  function calcTR() {
+    const c = parseFloat(document.getElementById('tr-contrib').value);
+    const y = parseFloat(document.getElementById('tr-years').value);
+    const g = parseFloat(document.getElementById('tr-grow').value) / 100;
+    const now = parseFloat(document.getElementById('tr-now').value) / 100;
+    const later = parseFloat(document.getElementById('tr-later').value) / 100;
+    const grow = Math.pow(1 + g, y);
+    // Roth: contribute c of after-tax money, grows, all tax-free out
+    const roth = c * grow;
+    // Traditional: same c pre-tax grows, taxed at withdrawal
+    const trad = c * grow * (1 - later);
+    // Fair comparison: the tax deduction (c*now) is invested in taxable side account
+    // Approximate side account net growth (taxed lightly along the way ~ treat as tax-deferred then LTCG)
+    const side = c * now * grow * (1 - 0.15); // rough LTCG drag on the side pot
+    const tradTotal = trad + side;
+    document.getElementById('tr-roth').textContent = fmt$(roth);
+    document.getElementById('tr-trad').textContent = fmt$(trad);
+    document.getElementById('tr-side').textContent = fmt$(side);
+    const win = document.getElementById('tr-win');
+    if (roth > tradTotal) {
+      win.textContent = 'Roth by ' + fmt$(roth - tradTotal);
+    } else if (tradTotal > roth) {
+      win.textContent = 'Traditional by ' + fmt$(tradTotal - roth);
+    } else {
+      win.textContent = 'Dead heat';
+    }
+  }
+  bind('tr-contrib', v => fmt$(v), calcTR);
+  bind('tr-years', v => v + ' yrs', calcTR);
+  bind('tr-grow', v => v.toFixed(1) + '%', calcTR);
+  bind('tr-now', v => v + '%', calcTR);
+  bind('tr-later', v => v + '%', calcTR);
+  calcTR();
+
+  // ============ 03. THE RETIREMENT STACK ============
+  let RS = { age: 'under50', hsa: 'none' };
+  function calcRS() {
+    const saving = parseFloat(document.getElementById('rs-save').value);
+    const rate = parseFloat(document.getElementById('rs-rate').value) / 100;
+    // 2026 limits
+    let k401 = 24500, ira = 7500;
+    if (RS.age === '50to59') { k401 += 8000; ira += 1100; }
+    else if (RS.age === '60to63') { k401 += 11250; ira += 1100; }
+    let hsa = 0;
+    if (RS.hsa === 'self') hsa = 4400;
+    else if (RS.hsa === 'family') hsa = 8750;
+    if (hsa > 0 && RS.age !== 'under50') hsa += 1000; // 55+ catch-up (approx via age band)
+    const cap = k401 + ira + hsa;
+    const room = Math.max(0, cap - saving);
+    const saveTax = room * rate;
+    document.getElementById('rs-401k').textContent = fmt$(k401);
+    document.getElementById('rs-ira').textContent = fmt$(ira);
+    document.getElementById('rs-hsatxt').textContent = hsa > 0 ? fmt$(hsa) : 'Not eligible';
+    document.getElementById('rs-cap').textContent = fmt$(cap);
+    document.getElementById('rs-room').textContent = fmt$(room);
+    document.getElementById('rs-save-tax').textContent = fmt$(saveTax);
+  }
+  // Wire age & hsa segments to the RS object (with active-state toggling)
+  (function wireRS() {
+    const ageGrp = document.getElementById('seg-age');
+    ageGrp.querySelectorAll('button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        ageGrp.querySelectorAll('button').forEach(b => b.classList.remove('on'));
+        btn.classList.add('on');
+        RS.age = btn.dataset.v; calcRS();
+      });
+    });
+    const hsaGrp = document.getElementById('seg-hsa');
+    hsaGrp.querySelectorAll('button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        hsaGrp.querySelectorAll('button').forEach(b => b.classList.remove('on'));
+        btn.classList.add('on');
+        RS.hsa = btn.dataset.v; calcRS();
+      });
+    });
+  })();
+  bind('rs-save', v => fmt$(v), calcRS);
+  bind('rs-rate', v => v + '%', calcRS);
+  calcRS();
+
+  // ============ 04. 529 EDUCATION ============
+  function calc529() {
+    const c = parseFloat(document.getElementById('c5-contrib').value);
+    const y = parseFloat(document.getElementById('c5-years').value);
+    const g = parseFloat(document.getElementById('c5-grow').value) / 100;
+    const sr = parseFloat(document.getElementById('c5-state').value) / 100;
+    // Future value of an annuity of c for y years
+    let bal = 0;
+    for (let i = 0; i < y; i++) bal = (bal + c) * (1 + g);
+    const contributed = c * y;
+    const growth = Math.max(0, bal - contributed);
+    const stateVal = contributed * sr;
+    // $35K rolled to Roth at ~year 18, grown to age 65 (assume ~47 yrs at 7%)
+    const rothFV = Math.min(35000, bal) * Math.pow(1.07, 47);
+    document.getElementById('c5-in').textContent = fmt$(contributed);
+    document.getElementById('c5-bal').textContent = fmt$(bal);
+    document.getElementById('c5-growth').textContent = fmt$(growth);
+    document.getElementById('c5-statev').textContent = fmt$(stateVal);
+    document.getElementById('c5-roth').textContent = fmt$(rothFV);
+  }
+  bind('c5-contrib', v => fmt$(v), calc529);
+  bind('c5-years', v => v + ' yrs', calc529);
+  bind('c5-grow', v => v.toFixed(1) + '%', calc529);
+  bind('c5-state', v => v.toFixed(1) + '%', calc529);
+  calc529();
+
+  // ============ 02. CAPITAL GAINS & NIIT ============
+  // 2026 LTCG breakpoints (taxable income) and NIIT thresholds
+  const LTCG = {
+    mfj:    { z0: 98900, z15: 613700, niit: 250000 },
+    single: { z0: 49450, z15: 545500, niit: 200000 }
+  };
+  // 2026 ordinary brackets reused for short-term (taxable income)
+  let CG = { file: 'mfj', hold: 'long' };
+  function ltcgTax(ord, gain, f) {
+    // gain stacks on top of ordinary income; taxed at LT rate by where it lands
+    const b = LTCG[f];
+    let tax = 0, lo = ord, remaining = gain;
+    // 0% band
+    const in0 = Math.max(0, Math.min(lo + remaining, b.z0) - lo);
+    lo += in0; remaining -= in0;
+    // 15% band
+    const in15 = Math.max(0, Math.min(lo + remaining, b.z15) - lo);
+    tax += in15 * 0.15; lo += in15; remaining -= in15;
+    // 20% band
+    if (remaining > 0) { tax += remaining * 0.20; }
+    return tax;
+  }
+  function calcCG() {
+    const ord = parseFloat(document.getElementById('cg-ord').value);
+    const gain = parseFloat(document.getElementById('cg-gain').value);
+    const f = CG.file;
+    const b = LTCG[f];
+    // Long-term tax
+    const lt = ltcgTax(ord, gain, f);
+    // Short-term: taxed as ordinary — approximate marginal via fedTax delta
+    const stDelta = fedTax(ord + gain, f) - fedTax(ord, f);
+    // NIIT applies to gain to the extent MAGI over threshold (approx MAGI = ord+gain)
+    const magi = ord + gain;
+    const niitBase = Math.min(gain, Math.max(0, magi - b.niit));
+    const niit = niitBase * 0.038;
+    const chosenBase = CG.hold === 'long' ? lt : stDelta;
+    const total = chosenBase + niit;
+    // marginal rate on gain
+    const rate = (total / gain * 100);
+    // penalty for short vs long
+    const penalty = (stDelta + niit) - (lt + niit);
+    document.getElementById('cg-rate').textContent = rate.toFixed(1) + '%';
+    document.getElementById('cg-base').textContent = fmt$(chosenBase);
+    document.getElementById('cg-niit').textContent = fmt$(niit);
+    document.getElementById('cg-total').textContent = fmt$(total);
+    document.getElementById('cg-penalty').textContent = penalty > 0 ? '+' + fmt$(penalty) + ' more tax' : '$0';
+  }
+  wireSegLocal('seg-cgfile', v => { CG.file = v; calcCG(); });
+  wireSegLocal('seg-cghold', v => { CG.hold = v; calcCG(); });
+  bind('cg-ord', v => fmt$(v), calcCG);
+  bind('cg-gain', v => fmt$(v), calcCG);
+  calcCG();
+
+  // ============ 05. TAXABLE BROKERAGE ============
+  function calcBK() {
+    const amt = parseFloat(document.getElementById('bk-amt').value);
+    const y = parseFloat(document.getElementById('bk-years').value);
+    const g = parseFloat(document.getElementById('bk-grow').value) / 100;
+    const cg = parseFloat(document.getElementById('bk-cg').value) / 100;
+    // small annual dividend drag (~1.8% yield taxed at cg rate)
+    const netG = g - (0.018 * cg);
+    const pre = amt * Math.pow(1 + netG, y);
+    const gain = Math.max(0, pre - amt);
+    const tax = gain * cg;
+    const sold = pre - tax;
+    const death = pre; // step-up: heirs receive full value, no income tax on gain
+    document.getElementById('bk-pre').textContent = fmt$(pre);
+    document.getElementById('bk-sold').textContent = fmt$(sold);
+    document.getElementById('bk-tax').textContent = fmt$(tax);
+    document.getElementById('bk-death').textContent = fmt$(death);
+  }
+  bind('bk-amt', v => fmt$(v), calcBK);
+  bind('bk-years', v => v + ' yrs', calcBK);
+  bind('bk-grow', v => v.toFixed(1) + '%', calcBK);
+  bind('bk-cg', v => v.toFixed(1) + '%', calcBK);
+  calcBK();
+
+  // ============ 06. ROTH CONVERSION ============
+  // 2026 MFJ bracket tops (taxable income)
+  const RC_TOPS = { 0.12: 96950, 0.22: 206700, 0.24: 394600, 0.32: 501050 };
+  let RC = { bracket: 0.22 };
+  function calcRC() {
+    const inc = parseFloat(document.getElementById('rc-inc').value);
+    const bal = parseFloat(document.getElementById('rc-bal').value);
+    const y = parseFloat(document.getElementById('rc-years').value);
+    const g = parseFloat(document.getElementById('rc-grow').value) / 100;
+    const top = RC_TOPS[RC.bracket];
+    const room = Math.max(0, top - inc);
+    const conv = Math.min(room, bal);
+    const tax = conv * RC.bracket;   // approx: converted dollars taxed at the target marginal rate
+    const fv = conv * Math.pow(1 + g, y);  // grows tax-free in Roth
+    document.getElementById('rc-room').textContent = fmt$(room);
+    document.getElementById('rc-conv').textContent = fmt$(conv);
+    document.getElementById('rc-tax').textContent = fmt$(tax);
+    document.getElementById('rc-fv').textContent = fmt$(fv);
+  }
+  wireSegLocal('seg-rcbr', v => { RC.bracket = parseFloat(v); calcRC(); });
+  bind('rc-inc', v => fmt$(v), calcRC);
+  bind('rc-bal', v => fmt$(v), calcRC);
+  bind('rc-years', v => v + ' yrs', calcRC);
+  bind('rc-grow', v => v.toFixed(1) + '%', calcRC);
+  calcRC();
+
+  // ============ 07. SOCIAL SECURITY & DRAWDOWN ============
+  const SS_T = { mfj: { t1: 32000, t2: 44000, add: 6000 }, single: { t1: 25000, t2: 34000, add: 4500 } };
+  let SS = { file: 'mfj' };
+  function calcSS() {
+    const ben = parseFloat(document.getElementById('ss-ben').value);
+    const other = parseFloat(document.getElementById('ss-other').value);
+    const muni = parseFloat(document.getElementById('ss-muni').value);
+    const t = SS_T[SS.file];
+    const prov = other + muni + ben * 0.5;
+    // IRC §86 two-tier formula
+    let taxable;
+    if (prov <= t.t1) {
+      taxable = 0;
+    } else if (prov <= t.t2) {
+      taxable = Math.min(0.5 * (prov - t.t1), 0.5 * ben);
+    } else {
+      const tier1 = Math.min(0.5 * (t.t2 - t.t1), 0.5 * ben);
+      taxable = Math.min(0.85 * ben, 0.85 * (prov - t.t2) + tier1);
+    }
+    const pct = ben > 0 ? (taxable / ben * 100) : 0;
+    const free = ben - taxable;
+    document.getElementById('ss-prov').textContent = fmt$(prov);
+    document.getElementById('ss-taxable').textContent = fmt$(taxable);
+    document.getElementById('ss-pct').textContent = pct.toFixed(0) + '%';
+    document.getElementById('ss-free').textContent = fmt$(free);
+  }
+  wireSegLocal('seg-ssfile', v => { SS.file = v; calcSS(); });
+  bind('ss-ben', v => fmt$(v), calcSS);
+  bind('ss-other', v => fmt$(v), calcSS);
+  bind('ss-muni', v => fmt$(v), calcSS);
+  calcSS();
+</script>
+</body>
+</html>
