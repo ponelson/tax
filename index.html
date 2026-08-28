@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tax &amp; Estate Basics</title>
+<title>Tax &amp; Estate Basics v2.0</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&display=swap" rel="stylesheet">
@@ -181,6 +181,9 @@
   .dispatch:nth-child(9) { animation-delay: 0.45s; }
   .dispatch:nth-child(10) { animation-delay: 0.50s; }
   .dispatch:nth-child(11) { animation-delay: 0.55s; }
+  .dispatch:nth-child(12) { animation-delay: 0.60s; }
+  .dispatch:nth-child(13) { animation-delay: 0.65s; }
+  .dispatch:nth-child(14) { animation-delay: 0.70s; }
 
   @keyframes rise {
     to { opacity: 1; transform: translateY(0); }
@@ -742,7 +745,7 @@
   <header class="masthead">
     <div class="kicker">
       <span><span class="vol">A PRACTICAL PRIMER</span></span>
-      <span>2026 EDITION</span>
+      <span>v2.0 · 2026 EDITION</span>
     </div>
     <h1 class="title">Tax &amp; Estate<br><em>Basics</em></h1>
     <p class="deck">Working math for the structures that move income and wealth through the tax code — federal, state, and city, with every lever exposed.</p>
@@ -787,6 +790,13 @@
       <a href="#s15"><span class="toc-num">15</span><span class="toc-title">Qualified Personal Residence Trust</span><span class="toc-dot"></span><span class="toc-tag">QPRT</span></a>
       <a href="#s16"><span class="toc-num">16</span><span class="toc-title">Irrevocable Life Insurance Trust</span><span class="toc-dot"></span><span class="toc-tag">ILIT</span></a>
       <a href="#s17"><span class="toc-num">17</span><span class="toc-title">Dynasty Trust</span><span class="toc-dot"></span><span class="toc-tag">GST-exempt</span></a>
+    </div>
+
+    <div class="toc-group">
+      <div class="toc-group-label">Insurance Wrappers &amp; Lending</div>
+      <a href="#s18"><span class="toc-num">18</span><span class="toc-title">Private Placement Life Insurance</span><span class="toc-dot"></span><span class="toc-tag">PPLI</span></a>
+      <a href="#s19"><span class="toc-num">19</span><span class="toc-title">Life Insurance as a Tax Wrapper</span><span class="toc-dot"></span><span class="toc-tag">Cash value · LIRP</span></a>
+      <a href="#s20"><span class="toc-num">20</span><span class="toc-title">Buy, Borrow, Die</span><span class="toc-dot"></span><span class="toc-tag">Trust lending · margin · PALs</span></a>
     </div>
 
     <div class="toc-group">
@@ -1756,6 +1766,192 @@
 
 
 
+  <!-- ============ 18. PPLI ============ -->
+  <article class="dispatch" id="s18">
+    <div class="dispatch-head">
+      <span class="folio">№ 18</span>
+      <h2 class="vname">Private Placement Life Insurance</h2>
+      <span class="acro">PPLI</span>
+    </div>
+    <p class="tldr">Wrap a hedge fund, PE allocation, or high-turnover strategy inside a life-insurance chassis. Growth compounds <em>tax-free</em>; withdrawals come out as policy loans (no tax); at death the entire value passes income-tax-free as a death benefit. The insurance wrapper converts ordinary income and short-term gains into never-taxed wealth.</p>
+
+    <div class="calc">
+      <p class="scenario">You're an accredited investor allocating to alternatives that generate high ordinary income or short-term gains. Compare the same strategy inside a PPLI wrapper vs. a taxable account. The wrapper eliminates annual tax drag; death benefit passes income-tax-free.</p>
+
+      <div class="controls">
+        <div class="ctrl">
+          <label>Initial Premium <span class="val" id="ppli-prem-v">$5,000,000</span></label>
+          <input type="range" id="ppli-prem" min="1000000" max="50000000" step="500000" value="5000000">
+        </div>
+        <div class="ctrl">
+          <label>Annual Return (pre-tax) <span class="val" id="ppli-ret-v">10.0%</span></label>
+          <input type="range" id="ppli-ret" min="4" max="20" step="0.5" value="10">
+        </div>
+        <div class="ctrl">
+          <label>Taxable Drag Rate <span class="val" id="ppli-drag-v">35%</span></label>
+          <input type="range" id="ppli-drag" min="15" max="50" step="1" value="35">
+        </div>
+        <div class="ctrl">
+          <label>Years <span class="val" id="ppli-yrs-v">20</span></label>
+          <input type="range" id="ppli-yrs" min="5" max="40" step="1" value="20">
+        </div>
+        <div class="ctrl">
+          <label>Annual Policy Cost (insurance + admin) <span class="val" id="ppli-cost-v">0.8%</span></label>
+          <input type="range" id="ppli-cost" min="0.3" max="2.0" step="0.1" value="0.8">
+        </div>
+      </div>
+
+      <div class="outputs cols-2">
+        <div class="out-row">
+          <span class="out-label">PPLI value at horizon</span>
+          <span class="out-value" id="ppli-ins">—</span>
+        </div>
+        <div class="out-row">
+          <span class="out-label">Same strategy, taxable account</span>
+          <span class="out-value" id="ppli-tax">—</span>
+        </div>
+        <div class="out-row">
+          <span class="out-label">Cumulative tax drag avoided</span>
+          <span class="out-value" id="ppli-saved">—</span>
+        </div>
+        <div class="out-row hero">
+          <span class="out-label">Death benefit (income-tax-free)</span>
+          <span class="out-value hero" id="ppli-db">—</span>
+        </div>
+      </div>
+    </div>
+    <p class="field-note">PPLI requires the policy to satisfy IRC §7702 (definitional tests) and §817(h) (investment diversification). The policyholder can't direct individual trades — an Investment Insurance Arrangement (IIA) via a compliant insurance-dedicated fund (IDF) is the standard structure. Minimum premiums are typically $1–5M. Domicile matters: policies are commonly issued in jurisdictions with favorable regulatory frameworks (Bermuda, Barbados, Cayman, or domestic carriers in CT, DE, SC). Inside an ILIT, the wrapper also strips estate tax — the policy isn't in your estate and the death benefit escapes both income and transfer tax. Cost of insurance (COI) charges and admin fees are the price of admission; the math only works if your underlying strategy is high-turnover or generates substantial ordinary income that would otherwise be taxed annually.</p>
+  </article>
+
+
+  <!-- ============ 19. LIFE INSURANCE TAX WRAPPER ============ -->
+  <article class="dispatch" id="s19">
+    <div class="dispatch-head">
+      <span class="folio">№ 19</span>
+      <h2 class="vname">Life Insurance as a Tax Wrapper</h2>
+      <span class="acro">CASH VALUE · LIRP</span>
+    </div>
+    <p class="tldr">Whole life, universal life, and indexed UL policies build a <em>cash value</em> that grows tax-deferred. Borrow against it tax-free. At death, the entire value passes income-tax-free as a death benefit. The mechanics: overfund a permanent policy (staying under the MEC line), let it compound, then access it via loans — never a taxable event.</p>
+
+    <div class="calc">
+      <p class="scenario">You fund a permanent life policy with annual premiums, and the cash value grows at a net crediting rate. After the accumulation phase, you access cash through policy loans rather than withdrawals.</p>
+
+      <div class="controls">
+        <div class="ctrl">
+          <label>Annual Premium <span class="val" id="li-prem-v">$100,000</span></label>
+          <input type="range" id="li-prem" min="10000" max="1000000" step="10000" value="100000">
+        </div>
+        <div class="ctrl">
+          <label>Premium Payment Years <span class="val" id="li-pay-v">15</span></label>
+          <input type="range" id="li-pay" min="5" max="30" step="1" value="15">
+        </div>
+        <div class="ctrl">
+          <label>Net Crediting Rate (after COI) <span class="val" id="li-cred-v">5.0%</span></label>
+          <input type="range" id="li-cred" min="2" max="8" step="0.25" value="5">
+        </div>
+        <div class="ctrl">
+          <label>Years Until Loan Access <span class="val" id="li-access-v">20</span></label>
+          <input type="range" id="li-access" min="10" max="40" step="1" value="20">
+        </div>
+        <div class="ctrl">
+          <label>Policy Loan Rate <span class="val" id="li-loan-v">4.0%</span></label>
+          <input type="range" id="li-loan" min="2" max="8" step="0.25" value="4">
+        </div>
+      </div>
+
+      <div class="outputs cols-2">
+        <div class="out-row">
+          <span class="out-label">Total premiums paid</span>
+          <span class="out-value" id="li-paid">—</span>
+        </div>
+        <div class="out-row">
+          <span class="out-label">Cash value at loan-access year</span>
+          <span class="out-value" id="li-cv">—</span>
+        </div>
+        <div class="out-row">
+          <span class="out-label">Tax-free borrowing capacity (~80% CV)</span>
+          <span class="out-value" id="li-borrow">—</span>
+        </div>
+        <div class="out-row hero">
+          <span class="out-label">Effective tax-free yield on premiums</span>
+          <span class="out-value hero" id="li-yield">—</span>
+        </div>
+      </div>
+    </div>
+    <p class="field-note">The MEC (Modified Endowment Contract) line is the cliff: overfund beyond the seven-pay test and policy loans become taxable (and penalized before 59½). A policy that isn't a MEC lets you withdraw basis first (FIFO) tax-free, then take further amounts as loans — loans aren't income. The death benefit repays the loan balance and delivers the rest to beneficiaries income-tax-free under §101(a)(1). Common access patterns: 1) FIFO withdrawals up to basis, 2) switch to policy loans above basis, 3) death benefit cleans up the balance. IUL and VUL policies link cash-value growth to an index or subaccounts; whole life policies credit a declared dividend. Net-of-COI crediting rate is the real return — gross illustrations are often misleading. If the policy lapses with outstanding loans, the entire gain becomes taxable income — phantom income with no cash to pay it. Keep the policy in force.</p>
+  </article>
+
+
+  <!-- ============ 20. BUY, BORROW, DIE ============ -->
+  <article class="dispatch" id="s20">
+    <div class="dispatch-head">
+      <span class="folio">№ 20</span>
+      <h2 class="vname">Buy, Borrow, Die</h2>
+      <span class="acro">TRUST LENDING · MARGIN · PALs</span>
+    </div>
+    <p class="tldr">The richest tax strategy isn't a deduction — it's <em>never selling</em>. Buy appreciating assets, borrow against them for spending cash (loans aren't income), and hold until death when the step-up erases the gain. Trusts, margin, and pledged-asset lines all serve the same logic.</p>
+
+    <div class="calc">
+      <p class="scenario">You hold appreciated assets in a brokerage or trust and borrow against them at a securities-backed lending rate instead of selling and paying capital gains. Compare the after-tax outcomes: sell vs. borrow and let the step-up erase the basis at death.</p>
+
+      <div class="controls">
+        <div class="ctrl">
+          <label>Portfolio Value <span class="val" id="bbd-port-v">$10,000,000</span></label>
+          <input type="range" id="bbd-port" min="1000000" max="50000000" step="500000" value="10000000">
+        </div>
+        <div class="ctrl">
+          <label>Cost Basis (% of value) <span class="val" id="bbd-basis-v">20%</span></label>
+          <input type="range" id="bbd-basis" min="5" max="80" step="5" value="20">
+        </div>
+        <div class="ctrl">
+          <label>Cash Needed <span class="val" id="bbd-cash-v">$2,000,000</span></label>
+          <input type="range" id="bbd-cash" min="100000" max="10000000" step="100000" value="2000000">
+        </div>
+        <div class="ctrl">
+          <label>Blended CG + NIIT Rate <span class="val" id="bbd-cg-v">23.8%</span></label>
+          <input type="range" id="bbd-cg" min="15" max="40" step="0.1" value="23.8">
+        </div>
+        <div class="ctrl">
+          <label>Borrowing Rate (PAL / margin) <span class="val" id="bbd-rate-v">5.0%</span></label>
+          <input type="range" id="bbd-rate" min="2" max="8" step="0.25" value="5">
+        </div>
+        <div class="ctrl">
+          <label>Years Until Death (step-up) <span class="val" id="bbd-yrs-v">15</span></label>
+          <input type="range" id="bbd-yrs" min="1" max="40" step="1" value="15">
+        </div>
+        <div class="ctrl">
+          <label>Portfolio Growth Rate <span class="val" id="bbd-grow-v">7.0%</span></label>
+          <input type="range" id="bbd-grow" min="3" max="12" step="0.5" value="7">
+        </div>
+      </div>
+
+      <div class="outputs cols-2">
+        <div class="out-row">
+          <span class="out-label">Tax if you sell to raise cash</span>
+          <span class="out-value" id="bbd-selltax">—</span>
+        </div>
+        <div class="out-row">
+          <span class="out-label">Cumulative interest cost to borrow instead</span>
+          <span class="out-value" id="bbd-interest">—</span>
+        </div>
+        <div class="out-row">
+          <span class="out-label">Savings from borrowing vs. selling</span>
+          <span class="out-value" id="bbd-save">—</span>
+        </div>
+        <div class="out-row">
+          <span class="out-label">Portfolio at death (stepped-up basis)</span>
+          <span class="out-value" id="bbd-death">—</span>
+        </div>
+        <div class="out-row hero">
+          <span class="out-label">Total gain erased by step-up</span>
+          <span class="out-value hero" id="bbd-erased">—</span>
+        </div>
+      </div>
+    </div>
+    <p class="field-note"><strong>Mechanism menu:</strong> <em>Margin loans</em> — borrow against a brokerage account; rates typically SOFR + spread; margin calls if the portfolio drops below the maintenance requirement. <em>Pledged-asset lines (PALs)</em> — a line of credit collateralized by securities; no margin calls in most structures, but a decline triggers a coverage cure. <em>SBLOC (Securities-Backed Line of Credit)</em> — the bank product version; revolving, interest-only, typically 50–70% LTV. <em>Trust-level borrowing</em> — an IDGT, SLAT, or dynasty trust borrows against its own portfolio to make distributions; the trust pays interest (which the grantor effectively subsidizes through income-tax burn in a grantor trust). <em>PPLI loans</em> — borrow against a PPLI cash value; no income realization, no margin call, and if the insured dies the death benefit settles the loan and delivers the excess tax-free. <em>Charitable remainder trust distributions</em> — not a loan, but a CRT can sell appreciated assets inside the trust, reinvest, and pay you an income stream — the trust itself pays no capital gains tax on the sale. All of these share the same core logic: access wealth without triggering a realization event, preserve the compounding base, and let the step-up at death erase the embedded gain.</p>
+  </article>
+
+
   <!-- ============ DECISION FLOWCHART ============ -->
   <article class="dispatch" id="flow">
     <div class="dispatch-head">
@@ -1811,8 +2007,15 @@
       <div class="flow-step">
         <span class="flow-num">7</span>
         <div class="flow-body">
-          <h3>Taxable brokerage</h3>
-          <p>Unlimited, flexible, capital-gains rates, and step-up at death. The catch-all for everything above.</p>
+          <h3>Insurance wrappers (PPLI / overfunded life)</h3>
+          <p>For high-turnover or alternative strategies: wrap them in PPLI to eliminate annual tax drag. For excess cash flow: overfund a permanent policy (below the MEC line) for tax-free compounding and borrowing.</p>
+        </div>
+      </div>
+      <div class="flow-step">
+        <span class="flow-num">8</span>
+        <div class="flow-body">
+          <h3>Taxable brokerage + borrow, don't sell</h3>
+          <p>Unlimited, flexible, capital-gains rates, and step-up at death. Once built, borrow against it (PAL, SBLOC, margin) instead of selling — loans aren't income, and the step-up erases the gain.</p>
         </div>
       </div>
     </div>
@@ -1869,6 +2072,16 @@
         <h3>Annual Gift Exclusion</h3>
         <p>You can give <strong>$19,000</strong> per recipient in 2026 with no gift-tax filing and no use of your lifetime exemption. 529s allow <strong>5-year front-loading</strong> — up to $95,000 at once per beneficiary ($190,000 per couple) — treated as five years of exclusions.</p>
       </div>
+      <div class="rule-card">
+        <span class="rule-tag">MEC</span>
+        <h3>Modified Endowment Contract (7-Pay Test)</h3>
+        <p>Fund a life policy faster than seven level annual premiums would require and it becomes a <strong>MEC</strong> — loans and withdrawals are then taxed LIFO (gains first) and penalized before 59½. The label is permanent and can't be undone. Stay under the line.</p>
+      </div>
+      <div class="rule-card">
+        <span class="rule-tag">MARGIN</span>
+        <h3>Margin Calls &amp; Policy Lapse</h3>
+        <p>Securities-backed loans carry <strong>margin-call risk</strong> — a market drop can force a sale at the worst time, crystallizing the gain you were trying to avoid. Life policy loans carry <strong>lapse risk</strong> — if the cash value can't cover mounting loan interest and COI, the policy terminates and the entire gain is phantom income.</p>
+      </div>
     </div>
     <p class="field-note">Deadlines matter as much as rules: IRA and HSA contributions for a tax year run until the April filing deadline; 401(k) elective deferrals must be made by December 31. Contribution limits and thresholds are indexed and shift annually — these reflect 2026.</p>
   </article>
@@ -1901,6 +2114,13 @@
       <div class="gloss-item"><dt>Backdoor Roth</dt><dd>Contribute to a non-deductible IRA, then convert to Roth — a legal path around the Roth income limit. Mind the pro-rata rule.</dd></div>
       <div class="gloss-item"><dt>Step-up in basis</dt><dd>At death, an asset's basis resets to market value, erasing the income tax on all prior appreciation for heirs.</dd></div>
       <div class="gloss-item"><dt>IRMAA</dt><dd>Income-Related Monthly Adjustment Amount — a Medicare premium surcharge triggered by high MAGI two years prior.</dd></div>
+      <div class="gloss-item"><dt>PPLI</dt><dd>Private Placement Life Insurance — a variable life policy wrapping alternative or high-turnover investments; growth is tax-free, accessed via loans, and the death benefit passes income-tax-free.</dd></div>
+      <div class="gloss-item"><dt>MEC</dt><dd>Modified Endowment Contract — a life policy that fails the 7-pay test by being overfunded too quickly. Loans from a MEC are taxable (and penalized before 59½).</dd></div>
+      <div class="gloss-item"><dt>COI</dt><dd>Cost of Insurance — the mortality charge inside a life policy; rises with age and is the real friction cost of using insurance as a tax wrapper.</dd></div>
+      <div class="gloss-item"><dt>LIRP</dt><dd>Life Insurance Retirement Plan — an overfunded permanent life policy used as a tax-free income source in retirement, accessed via FIFO withdrawals and then policy loans.</dd></div>
+      <div class="gloss-item"><dt>PAL / SBLOC</dt><dd>Pledged-Asset Line / Securities-Backed Line of Credit — a loan collateralized by your portfolio. Access cash without selling; the loan isn't a taxable event.</dd></div>
+      <div class="gloss-item"><dt>Buy, Borrow, Die</dt><dd>The strategy of holding appreciated assets (buy), borrowing against them for cash (borrow), and relying on the step-up in basis at death (die) to erase the embedded gain.</dd></div>
+      <div class="gloss-item"><dt>IDF</dt><dd>Insurance-Dedicated Fund — a pooled investment vehicle available only to insurance company separate accounts, required for PPLI compliance under §817(h).</dd></div>
     </div>
     <p class="field-note">Every dollar figure and threshold in this guide reflects 2026 and is indexed or frozen as noted. Terms are simplified for intuition — the Internal Revenue Code defines each with far more precision.</p>
   </article>
@@ -1913,6 +2133,7 @@
     <p><strong>Math is illustrative.</strong> The actuarial calculations underlying real CRTs, CLTs, GRATs, and QPRTs use IRS mortality tables and present-value math that this guide approximates for intuition.</p>
     <p><strong>The income-tax map</strong> uses 2026 federal brackets (IRS Rev. Proc. 2025-32) and a simplified base-to-top state model; it ignores AMT, NIIT thresholds, sourcing rules, phaseouts, and the audit risk of a contested domicile change. Directional, not a return.</p>
     <p><strong>Legal disclaimer.</strong> This entire document is a personal project provided solely for illustrative, educational, and recreational purposes. It does not constitute tax, legal, investment, accounting, financial, or other professional advice, and should not be relied upon for any transaction, filing, estate plan, investment decision, or other real-world action. The models, calculations, assumptions, examples, and scenarios are simplified, may be incomplete or outdated, and may not reflect the law or circumstances applicable to any particular person. No professional, advisory, fiduciary, attorney-client, accountant-client, or other relationship is created by use of this site. Consult appropriately qualified professionals before making any decision.</p>
+    <p class="verstamp"><strong>Tax &amp; Estate Basics — v2.0</strong> · build 2026-08-28T05:31 · supersedes v1.0. Changes in v2: added PPLI (§18), Life Insurance as a Tax Wrapper (§19), Buy-Borrow-Die / trust lending strategies (§20), updated flowchart, glossary, and rules reference.</p>
   </footer>
 
 </div>
@@ -2524,6 +2745,108 @@
   bind('ss-other', v => fmt$(v), calcSS);
   bind('ss-muni', v => fmt$(v), calcSS);
   calcSS();
+
+  // ============ 18. PPLI ============
+  function calcPPLI() {
+    const prem = parseFloat(document.getElementById('ppli-prem').value);
+    const ret = parseFloat(document.getElementById('ppli-ret').value) / 100;
+    const drag = parseFloat(document.getElementById('ppli-drag').value) / 100;
+    const yrs = parseFloat(document.getElementById('ppli-yrs').value);
+    const cost = parseFloat(document.getElementById('ppli-cost').value) / 100;
+    // PPLI: grows at (return - policy cost), no annual tax
+    const insVal = prem * Math.pow(1 + ret - cost, yrs);
+    // Taxable: grows at (return * (1-drag)) each year
+    const taxVal = prem * Math.pow(1 + ret * (1 - drag), yrs);
+    const saved = insVal - taxVal;
+    // Death benefit ≈ policy value (minimum: face amount, but cash value dominates at maturity)
+    const db = insVal;
+    document.getElementById('ppli-ins').textContent = fmt$(insVal);
+    document.getElementById('ppli-tax').textContent = fmt$(taxVal);
+    document.getElementById('ppli-saved').textContent = fmt$(Math.max(0, saved));
+    document.getElementById('ppli-db').textContent = fmt$(db);
+  }
+  bind('ppli-prem', v => fmt$(v), calcPPLI);
+  bind('ppli-ret', v => v.toFixed(1) + '%', calcPPLI);
+  bind('ppli-drag', v => v + '%', calcPPLI);
+  bind('ppli-yrs', v => v + ' yrs', calcPPLI);
+  bind('ppli-cost', v => v.toFixed(1) + '%', calcPPLI);
+  calcPPLI();
+
+  // ============ 19. LIFE INSURANCE WRAPPER ============
+  function calcLI() {
+    const prem = parseFloat(document.getElementById('li-prem').value);
+    const payYrs = parseFloat(document.getElementById('li-pay').value);
+    const cred = parseFloat(document.getElementById('li-cred').value) / 100;
+    const accessYr = parseFloat(document.getElementById('li-access').value);
+    const loanRate = parseFloat(document.getElementById('li-loan').value) / 100;
+    const totalPaid = prem * payYrs;
+    // Cash value: premiums compound at crediting rate; after payment years, balance continues to grow
+    let cv = 0;
+    for (let i = 0; i < accessYr; i++) {
+      if (i < payYrs) cv = (cv + prem) * (1 + cred);
+      else cv = cv * (1 + cred);
+    }
+    const borrowCap = cv * 0.80; // conservative 80% LTV
+    // Effective yield: solve for r where totalPaid * (1+r)^accessYr = cv... approximate
+    const effectiveYield = (Math.pow(cv / totalPaid, 1 / accessYr) - 1) * 100;
+    document.getElementById('li-paid').textContent = fmt$(totalPaid);
+    document.getElementById('li-cv').textContent = fmt$(cv);
+    document.getElementById('li-borrow').textContent = fmt$(borrowCap);
+    document.getElementById('li-yield').textContent = effectiveYield.toFixed(1) + '%';
+  }
+  bind('li-prem', v => fmt$(v), calcLI);
+  bind('li-pay', v => v + ' yrs', calcLI);
+  bind('li-cred', v => v.toFixed(2) + '%', calcLI);
+  bind('li-access', v => v + ' yrs', calcLI);
+  bind('li-loan', v => v.toFixed(2) + '%', calcLI);
+  calcLI();
+
+  // ============ 20. BUY, BORROW, DIE ============
+  function calcBBD() {
+    const port = parseFloat(document.getElementById('bbd-port').value);
+    const basisPct = parseFloat(document.getElementById('bbd-basis').value) / 100;
+    const cash = parseFloat(document.getElementById('bbd-cash').value);
+    const cgRate = parseFloat(document.getElementById('bbd-cg').value) / 100;
+    const loanRate = parseFloat(document.getElementById('bbd-rate').value) / 100;
+    const yrs = parseFloat(document.getElementById('bbd-yrs').value);
+    const grow = parseFloat(document.getElementById('bbd-grow').value) / 100;
+
+    const basis = port * basisPct;
+    const gain = port - basis;
+
+    // Scenario A: Sell enough to raise cash. Need to sell more than 'cash' because of tax on the gain portion.
+    // Gain per dollar sold = (1 - basisPct)
+    const gainPerDollarSold = 1 - basisPct;
+    // Tax on selling $X = X * gainPerDollarSold * cgRate
+    // After-tax proceeds = X - X * gainPerDollarSold * cgRate = X * (1 - gainPerDollarSold * cgRate)
+    // Need: X * (1 - gainPerDollarSold * cgRate) = cash => X = cash / (1 - gainPerDollarSold * cgRate)
+    const amountToSell = cash / (1 - gainPerDollarSold * cgRate);
+    const sellTax = amountToSell * gainPerDollarSold * cgRate;
+
+    // Scenario B: Borrow. Interest cost over the period (simple: interest on the outstanding loan balance)
+    const totalInterest = cash * loanRate * yrs;
+
+    const savings = sellTax - totalInterest;
+
+    // Portfolio at death (the full portfolio continues to grow, minus any portion sold)
+    const portAtDeath = port * Math.pow(1 + grow, yrs);
+    // Total gain erased by step-up
+    const gainErased = portAtDeath - basis; // basis is original; step-up resets to portAtDeath
+
+    document.getElementById('bbd-selltax').textContent = fmt$(sellTax);
+    document.getElementById('bbd-interest').textContent = fmt$(totalInterest);
+    document.getElementById('bbd-save').textContent = (savings >= 0 ? '' : '−') + fmt$(Math.abs(savings));
+    document.getElementById('bbd-death').textContent = fmt$(portAtDeath);
+    document.getElementById('bbd-erased').textContent = fmt$(gainErased);
+  }
+  bind('bbd-port', v => fmt$(v), calcBBD);
+  bind('bbd-basis', v => v + '%', calcBBD);
+  bind('bbd-cash', v => fmt$(v), calcBBD);
+  bind('bbd-cg', v => v.toFixed(1) + '%', calcBBD);
+  bind('bbd-rate', v => v.toFixed(2) + '%', calcBBD);
+  bind('bbd-yrs', v => v + ' yrs', calcBBD);
+  bind('bbd-grow', v => v.toFixed(1) + '%', calcBBD);
+  calcBBD();
 </script>
 </body>
 </html>
