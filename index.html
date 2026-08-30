@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tax &amp; Estate Basics v2.0</title>
+<title>Tax &amp; Estate Basics v3.0 — Structures, With Their Trade-offs</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&display=swap" rel="stylesheet">
@@ -20,6 +20,12 @@
     --accent-soft: #0077ed;
     --accent-deep: #0058b0;
     --highlight: #d2e3fb;
+    --pro-ink: #14713f;
+    --pro-soft: #eaf6ef;
+    --pro-rule: #bfe3ce;
+    --con-ink: #9a3324;
+    --con-soft: #fdefec;
+    --con-rule: #f2ccc3;
     --shadow-sm: 0 1px 2px rgba(0,0,0,0.04), 0 1px 3px rgba(0,0,0,0.05);
     --shadow-md: 0 2px 6px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.06);
     --shadow-lg: 0 4px 12px rgba(0,0,0,0.05), 0 20px 56px rgba(0,0,0,0.09);
@@ -234,6 +240,79 @@
     margin-bottom: 24px;
   }
   .tldr em { font-style: normal; font-weight: 600; color: var(--accent); }
+
+  /* ---------- LEDGER (structural advantage / disadvantage) ---------- */
+  .ledger {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 26px;
+  }
+  .ledger-col {
+    border: 1px solid var(--rule-soft);
+    border-radius: 16px;
+    padding: 15px 17px 17px;
+    background: var(--paper-card);
+    box-shadow: var(--shadow-sm);
+  }
+  .ledger-col.pro { background: var(--pro-soft); border-color: var(--pro-rule); }
+  .ledger-col.con { background: var(--con-soft); border-color: var(--con-rule); }
+  .ledger-col h4 {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.045em;
+    text-transform: uppercase;
+    margin-bottom: 11px;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+  }
+  .ledger-col.pro h4 { color: var(--pro-ink); }
+  .ledger-col.con h4 { color: var(--con-ink); }
+  .ledger-col h4 .sig {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1;
+    color: var(--paper-card);
+    flex-shrink: 0;
+  }
+  .ledger-col.pro h4 .sig { background: var(--pro-ink); }
+  .ledger-col.con h4 .sig { background: var(--con-ink); }
+  .ledger-col ul { list-style: none; margin: 0; padding: 0; }
+  .ledger-col li {
+    font-family: var(--sans);
+    font-size: 13.5px;
+    line-height: 1.55;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    padding-left: 14px;
+    position: relative;
+    margin-bottom: 10px;
+  }
+  .ledger-col li:last-child { margin-bottom: 0; }
+  .ledger-col li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 8px;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+  }
+  .ledger-col.pro li::before { background: var(--pro-ink); }
+  .ledger-col.con li::before { background: var(--con-ink); }
+  .ledger-col li strong { font-weight: 600; color: var(--ink); }
+  @media (max-width: 700px) {
+    .ledger { grid-template-columns: 1fr; gap: 12px; }
+    .ledger-col li { font-size: 14px; }
+  }
 
   /* ---------- CALCULATOR ---------- */
   .calc {
@@ -745,10 +824,10 @@
   <header class="masthead">
     <div class="kicker">
       <span><span class="vol">A PRACTICAL PRIMER</span></span>
-      <span>v2.0 · 2026 EDITION</span>
+      <span>v3.0 · 2026 EDITION · build 2026-08-30T15:08</span>
     </div>
     <h1 class="title">Tax &amp; Estate<br><em>Basics</em></h1>
-    <p class="deck">Working math for the structures that move income and wealth through the tax code — federal, state, and city, with every lever exposed.</p>
+    <p class="deck">Working math for the structures that move income and wealth through the tax code — federal, state, and city, with every lever exposed. Each section opens with what the structure buys you and what it costs you.</p>
   </header>
 
   <div class="prologue">
@@ -814,6 +893,27 @@
       <span class="acro">CITY · STATE · FEDERAL</span>
     </div>
     <p class="tldr">Estate vehicles move <em>capital</em>. This moves <em>income</em>. Stack the three layers of tax — federal, state, city — then pull each planning lever and watch the wedge open. Where you sit, how you're taxed, and when you recognize income are all choices.</p>
+    <div class="ledger">
+      <div class="ledger-col pro">
+        <h4><span class="sig">+</span>Structural advantage</h4>
+        <ul>
+          <li><strong>Three independent dials.</strong> Federal rate is national, but state and city are not. Domicile, sourcing, and entity choice can swing the combined marginal rate by ten points or more without changing a dollar of what you earn.</li>
+          <li><strong>Timing is elective.</strong> Deferring, accelerating, or bunching recognition lets you choose the year — and therefore the bracket — in which income lands.</li>
+          <li><strong>Character conversion.</strong> Wage and ordinary income sit at the top of the ladder. Converting a stream into qualified dividends, long-term gain, or return of capital roughly halves the rate on the same economics.</li>
+          <li><strong>Deductions compound downward.</strong> A deduction taken at the federal level often reduces the state and city base too, so the effective value exceeds the federal rate alone.</li>
+        </ul>
+      </div>
+      <div class="ledger-col con">
+        <h4><span class="sig">−</span>Structural disadvantage</h4>
+        <ul>
+          <li><strong>Domicile is a fact, not an election.</strong> High-tax states audit departures aggressively on day counts, home ownership, family location, and professional ties. Filing a form is not the same as moving.</li>
+          <li><strong>The SALT cap breaks the stack.</strong> State and city tax is largely non-deductible federally, so the three layers no longer offset each other cleanly. You pay tax on tax.</li>
+          <li><strong>Phase-outs create hidden brackets.</strong> Credits and deductions that taper with income produce effective marginal rates well above the posted bracket, in ranges nobody publishes.</li>
+          <li><strong>Deferral is not forgiveness.</strong> Pushing income into a later year only wins if the later rate is lower. Rate risk runs both directions, and it is legislative, not personal.</li>
+        </ul>
+      </div>
+    </div>
+
 
     <div class="calc">
       <p class="scenario">A household with ordinary income decides where to be domiciled and which planning levers to pull. The three jurisdictions stack; the levers reshape each layer. All math is live and marginal-bracket-accurate for 2026.</p>
@@ -926,6 +1026,28 @@
       <span class="acro">0 · 15 · 20 + 3.8%</span>
     </div>
     <p class="tldr">Hold more than a year and gains get their own <em>preferential</em> 0/15/20% ladder — far below ordinary rates. Hold a year or less and they're taxed like wages. Above the income lines, a 3.8% surtax stacks on top.</p>
+    <div class="ledger">
+      <div class="ledger-col pro">
+        <h4><span class="sig">+</span>Structural advantage</h4>
+        <ul>
+          <li><strong>A parallel, cheaper rate ladder.</strong> Long-term gains and qualified dividends run 0/15/20 against ordinary income's 37% top. The same dollar of economics is taxed at roughly half.</li>
+          <li><strong>You choose the realization year.</strong> Unlike wages, a gain is taxed when you decide to trigger it. That makes it the most controllable item on the return.</li>
+          <li><strong>Losses are a durable asset.</strong> Harvested losses offset gains without limit, then $3,000 of ordinary income a year, and carry forward indefinitely.</li>
+          <li><strong>Death resets the clock.</strong> Basis steps up to date-of-death value. Unrealized gain held to the end is never taxed at all — the single largest break in the code.</li>
+        </ul>
+      </div>
+      <div class="ledger-col con">
+        <h4><span class="sig">−</span>Structural disadvantage</h4>
+        <ul>
+          <li><strong>The one-year line is absolute.</strong> A day short and the gain is taxed as ordinary income. There is no proration.</li>
+          <li><strong>NIIT stacks on top.</strong> A further 3.8% applies above $200,000 single / $250,000 joint MAGI — thresholds that have never been indexed, so more taxpayers cross them every year.</li>
+          <li><strong>Gains stack, they don't slot.</strong> Capital gain sits on top of ordinary income, so a large realization can push you through NIIT, IRMAA, and phase-out thresholds simultaneously.</li>
+          <li><strong>Wash-sale rules blunt harvesting.</strong> Repurchasing a substantially identical position within 30 days disallows the loss and forces you to hold a proxy instead of the thing you wanted.</li>
+          <li><strong>Deferral becomes concentration.</strong> Holding to avoid the tax is a real investment decision. A position kept for tax reasons is a position sized by the tax code rather than by conviction.</li>
+        </ul>
+      </div>
+    </div>
+
 
     <div class="calc">
       <p class="scenario">You're selling an appreciated asset. Long-term gains stack on top of your ordinary income and are taxed at the rate matching where they land. Toggle the holding period to see the penalty for selling too soon.</p>
@@ -991,6 +1113,27 @@
       <span class="acro">THE CORE DECISION</span>
     </div>
     <p class="tldr">The whole question in one line: is your tax rate <em>lower now</em> or <em>lower later</em>? Traditional deducts today and taxes the withdrawal; Roth taxes today and never again. Same limits, opposite timing.</p>
+    <div class="ledger">
+      <div class="ledger-col pro">
+        <h4><span class="sig">+</span>Structural advantage</h4>
+        <ul>
+          <li><strong>Traditional buys certainty now.</strong> The deduction is taken at your known current marginal rate. No forecast required for the near half of the trade.</li>
+          <li><strong>Roth removes tax from the compounding.</strong> Growth and withdrawals are untaxed, and Roth IRAs have no lifetime RMDs — the balance can be left to compound to the end.</li>
+          <li><strong>Roth is legislative insurance.</strong> Holding both types hedges the direction of future rates. Which one wins is unknowable, so the diversification is the point.</li>
+          <li><strong>Roth is the better inheritance.</strong> Heirs must empty the account within ten years either way, but from a Roth they do it tax-free rather than at their own top ordinary rate.</li>
+        </ul>
+      </div>
+      <div class="ledger-col con">
+        <h4><span class="sig">−</span>Structural disadvantage</h4>
+        <ul>
+          <li><strong>The decision rests on a forecast.</strong> You are comparing today's marginal rate to a rate decades out, which depends on your future income, your future state, and future law.</li>
+          <li><strong>Traditional balances become a liability.</strong> Pre-tax accounts generate RMDs that drive taxable income, IRMAA surcharges, and Social Security inclusion at exactly the point you have least flexibility.</li>
+          <li><strong>Conversions are irreversible.</strong> Recharacterization was eliminated in 2018. Convert in a year that turns out to be a high-income year and there is no undo.</li>
+          <li><strong>Roth access has its own clocks.</strong> Separate five-year rules govern contributions and each conversion. Getting them wrong turns a tax-free withdrawal into a taxable, penalized one.</li>
+        </ul>
+      </div>
+    </div>
+
 
     <div class="calc">
       <p class="scenario">You have a fixed amount of pre-tax income to save this year. Compare funding a Traditional account (deduct now, taxed at withdrawal) against a Roth (no deduction, tax-free at withdrawal) — with the Traditional tax savings invested alongside for a fair fight.</p>
@@ -1048,6 +1191,28 @@
       <span class="acro">401(k) · IRA · HSA</span>
     </div>
     <p class="tldr">The order of operations most planners agree on: capture the <em>match</em>, max the <em>HSA</em> (the only triple-tax-free account), then fill IRA and 401(k) room. Here's the 2026 ceiling and what tax-advantaged space you're leaving on the table.</p>
+    <div class="ledger">
+      <div class="ledger-col pro">
+        <h4><span class="sig">+</span>Structural advantage</h4>
+        <ul>
+          <li><strong>The match is a riskless return.</strong> An employer match is an immediate 50–100% on the contributed dollar. Nothing else in the stack competes with it.</li>
+          <li><strong>The HSA is triple-tax-free.</strong> Deductible in, tax-free growth, tax-free out for medical. It is the only account in the code with all three, and after 65 non-medical withdrawals are simply taxable, like a Traditional IRA.</li>
+          <li><strong>Contributions cascade.</strong> Pre-tax deferrals reduce AGI, which can restore eligibility for credits, deductions, and phase-out-sensitive benefits elsewhere on the return.</li>
+          <li><strong>Strong creditor protection.</strong> ERISA plan assets are broadly shielded from creditors; IRAs get substantial but state-dependent protection.</li>
+        </ul>
+      </div>
+      <div class="ledger-col con">
+        <h4><span class="sig">−</span>Structural disadvantage</h4>
+        <ul>
+          <li><strong>Hard annual ceilings.</strong> Unused contribution room does not carry forward. A year skipped is space gone permanently.</li>
+          <li><strong>Money is locked to 59½.</strong> Exceptions exist — Rule of 55, 72(t), hardship — but each is narrow and most carry a 10% penalty for getting them wrong.</li>
+          <li><strong>You inherit the plan's menu.</strong> Fund selection and expense ratios are set by the employer. A bad menu can cost more than the deferral saves.</li>
+          <li><strong>The HSA is conditional.</strong> It requires continuous HDHP coverage and eligibility ends at Medicare enrollment, which makes it unreliable as a long-horizon plan.</li>
+          <li><strong>Deferral builds the RMD problem.</strong> Every pre-tax dollar is a future forced withdrawal at ordinary rates in a year you do not control.</li>
+        </ul>
+      </div>
+    </div>
+
 
     <div class="calc">
       <p class="scenario">Set your age and what you're currently saving. The stack shows each account's 2026 limit, your total tax-advantaged capacity, and the unused room that quietly expires on December 31.</p>
@@ -1120,6 +1285,28 @@
       <span class="acro">THE FOURTH BUCKET</span>
     </div>
     <p class="tldr">The account with no limits, no lockup, and no withdrawal rules — and quietly, real tax advantages: preferential capital-gains rates, tax-loss harvesting, and a full <em>step-up in basis</em> at death that can erase a lifetime of gains for your heirs.</p>
+    <div class="ledger">
+      <div class="ledger-col pro">
+        <h4><span class="sig">+</span>Structural advantage</h4>
+        <ul>
+          <li><strong>No limits, no rules, no clock.</strong> Unlimited contributions, no income test, no age gate, no required distributions. It is the only bucket that never tells you what to do.</li>
+          <li><strong>Preferential rates by default.</strong> Held over a year, everything inside is taxed on the capital-gains ladder rather than as ordinary income.</li>
+          <li><strong>Losses are harvestable.</strong> Only a taxable account produces deductible losses. Tax-deferred accounts convert losses into nothing.</li>
+          <li><strong>Full step-up at death.</strong> A lifetime of unrealized appreciation can pass to heirs with the gain erased — the feature that makes buy-borrow-die work.</li>
+          <li><strong>It can be pledged.</strong> Marketable securities are the cleanest collateral there is, which turns the account into a borrowing base without a sale.</li>
+        </ul>
+      </div>
+      <div class="ledger-col con">
+        <h4><span class="sig">−</span>Structural disadvantage</h4>
+        <ul>
+          <li><strong>No deduction going in.</strong> Every dollar is after-tax, so the account starts behind a 401(k) or IRA on the same gross contribution.</li>
+          <li><strong>Annual drag you don't control.</strong> Dividends and fund capital-gain distributions are taxed whether or not you sold anything. High-turnover funds create phantom bills.</li>
+          <li><strong>Weak creditor protection.</strong> Outside a trust or an exempt wrapper, a brokerage account is an ordinary asset in a judgment.</li>
+          <li><strong>Rebalancing has a price.</strong> Every corrective trade is a realization event, so portfolio maintenance and tax efficiency pull against each other.</li>
+        </ul>
+      </div>
+    </div>
+
 
     <div class="calc">
       <p class="scenario">Compare $1 of growth in a taxable account against a tax-deferred one over time. The taxable account pays a small annual drag on dividends but wins its gains at capital-gains rates — and if held until death, the basis resets and the gain is never taxed at all.</p>
@@ -1174,6 +1361,27 @@
       <span class="acro">THE GAP-YEAR MOVE</span>
     </div>
     <p class="tldr">In low-income years — early retirement, before RMDs and Social Security start — you can move Traditional money to Roth and pay tax now at a <em>low</em> rate, to avoid a higher rate later. The art is converting <em>just enough</em> to fill your current bracket without spilling into the next.</p>
+    <div class="ledger">
+      <div class="ledger-col pro">
+        <h4><span class="sig">+</span>Structural advantage</h4>
+        <ul>
+          <li><strong>You pick the rate.</strong> Converting in a gap year — post-employment, pre-RMD, pre-Social Security — pays tax at a bracket you chose rather than one imposed later.</li>
+          <li><strong>It shrinks the future forced-income base.</strong> Every converted dollar is a dollar that will not be an RMD, will not raise IRMAA, and will not drag Social Security into taxation.</li>
+          <li><strong>Paying tax from outside is a stealth contribution.</strong> Funding the tax bill from taxable assets moves the full pre-tax balance into the Roth, effectively contributing above the annual limits.</li>
+          <li><strong>Cleaner for heirs.</strong> The ten-year drain rule still applies, but tax-free. Beneficiaries in peak earning years avoid inheriting a top-bracket income event.</li>
+        </ul>
+      </div>
+      <div class="ledger-col con">
+        <h4><span class="sig">−</span>Structural disadvantage</h4>
+        <ul>
+          <li><strong>Cash out the door, permanently.</strong> The tax is due in the conversion year and recharacterization no longer exists. There is no correction if the year turns out differently than modeled.</li>
+          <li><strong>Conversion income trips other wires.</strong> It counts for IRMAA (on a two-year lookback), ACA premium credits, NIIT thresholds, and capital-gain stacking — costs that do not appear in a simple bracket comparison.</li>
+          <li><strong>Breakeven takes years.</strong> The benefit is compounding on money you paid tax on early. Death, a large deduction, or a lower future rate before breakeven turns it into a loss.</li>
+          <li><strong>The pro-rata rule applies across all IRAs.</strong> You cannot convert only the basis. Any pre-tax IRA balance anywhere makes a portion of every conversion taxable, including a backdoor Roth.</li>
+        </ul>
+      </div>
+    </div>
+
 
     <div class="calc">
       <p class="scenario">You have a Traditional IRA and a lull in income. See how much room is left in your current bracket, the tax cost to convert that much, and what those converted dollars become — tax-free, RMD-free — decades later.</p>
@@ -1238,6 +1446,27 @@
       <span class="acro">THE INCOME PUZZLE</span>
     </div>
     <p class="tldr">How much of your Social Security is taxed depends on your <em>other</em> income — up to 85% gets pulled in above the thresholds. Which accounts you spend from, and in what order, quietly decides your lifetime tax bill.</p>
+    <div class="ledger">
+      <div class="ledger-col pro">
+        <h4><span class="sig">+</span>Structural advantage</h4>
+        <ul>
+          <li><strong>Delay is a priced annuity.</strong> Each year deferred past full retirement age adds roughly 8%, inflation-adjusted and government-backed. Nothing commercially available matches those terms.</li>
+          <li><strong>The benefit is never fully taxed.</strong> At most 85% is included in income. At least 15% is permanently tax-free regardless of your other income.</li>
+          <li><strong>Sequencing is a lever.</strong> Spending taxable assets first, then filling low brackets with conversions before claiming, can reshape the entire retirement tax curve.</li>
+          <li><strong>The survivor benefit is locked in.</strong> Delaying the higher earner's claim permanently raises the payment the surviving spouse will receive, which is longevity insurance for the household, not just the claimant.</li>
+        </ul>
+      </div>
+      <div class="ledger-col con">
+        <h4><span class="sig">−</span>Structural disadvantage</h4>
+        <ul>
+          <li><strong>The thresholds are frozen.</strong> The provisional-income lines that determine taxability were set in 1983 and 1993 and never indexed. Inflation alone pulls more of the benefit into tax each year.</li>
+          <li><strong>The tax torpedo.</strong> In the phase-in ranges, an extra dollar of income can make an additional 50–85 cents of benefit taxable, producing effective marginal rates far above the nominal bracket.</li>
+          <li><strong>Delaying costs liquidity.</strong> You must fund the gap years from somewhere, which usually means drawing down assets that would otherwise be compounding.</li>
+          <li><strong>It is a bet on longevity.</strong> Delay wins only if you live past the crossover, roughly the early eighties. Health and family history are the real inputs, and they are not knowable.</li>
+        </ul>
+      </div>
+    </div>
+
 
     <div class="calc">
       <p class="scenario">Model a retirement year: your benefit, plus other income (pensions, IRA withdrawals, interest). See how much of the benefit becomes taxable — and why Roth withdrawals, which don't count, are the release valve.</p>
@@ -1295,6 +1524,27 @@
       <span class="acro">529 · SECURE 2.0</span>
     </div>
     <p class="tldr">After-tax in, tax-free growth, tax-free out for education. Many states add a deduction on the way in — and leftover funds are no longer trapped: up to $35,000 can now roll to the beneficiary's Roth IRA.</p>
+    <div class="ledger">
+      <div class="ledger-col pro">
+        <h4><span class="sig">+</span>Structural advantage</h4>
+        <ul>
+          <li><strong>Tax-free growth and withdrawal.</strong> After-tax in, nothing taxed on the way out if used for qualified education. Long horizons make the compounding worth more than the deduction would have been.</li>
+          <li><strong>Many states pay you to use it.</strong> State deductions or credits on contributions are an immediate, riskless return in the year of funding.</li>
+          <li><strong>Superfunding.</strong> Five years of annual exclusion can be front-loaded in one year — $95,000 per donor per beneficiary at 2026 levels — moving assets out of the estate while the donor keeps control of the account.</li>
+          <li><strong>Leftovers are no longer trapped.</strong> SECURE 2.0 allows up to $35,000 lifetime to roll into the beneficiary's Roth IRA, which removes the main historical objection to funding one at all.</li>
+        </ul>
+      </div>
+      <div class="ledger-col con">
+        <h4><span class="sig">−</span>Structural disadvantage</h4>
+        <ul>
+          <li><strong>Non-qualified withdrawals are punished.</strong> Earnings come out as ordinary income plus a 10% penalty, and any state deduction may be recaptured.</li>
+          <li><strong>The Roth rollover is heavily conditioned.</strong> It requires a 15-year-old account, excludes recent contributions, is capped at the beneficiary's annual IRA limit, and requires the beneficiary to have earned income.</li>
+          <li><strong>Limited investment control.</strong> You choose from the plan's menu and may reallocate only twice a year.</li>
+          <li><strong>Overfunding risk is real.</strong> Scholarships, a cheaper school, or a child who doesn't attend leave you with money in the least flexible wrapper you own.</li>
+        </ul>
+      </div>
+    </div>
+
 
     <div class="calc">
       <p class="scenario">You fund a 529 for a child. See the tax-free growth, the value of your state deduction, and — the newer angle — how unused money converts to a retirement head start under the SECURE 2.0 Roth rollover.</p>
@@ -1353,6 +1603,28 @@
       <span class="acro">DAF</span>
     </div>
     <p class="tldr">Take the full deduction today. Grant the money later, on your own clock, with the assets compounding tax-free in between.</p>
+    <div class="ledger">
+      <div class="ledger-col pro">
+        <h4><span class="sig">+</span>Structural advantage</h4>
+        <ul>
+          <li><strong>Deduction timing decouples from grant timing.</strong> Take the full deduction in a high-income year and grant the money out over the following decade on your own schedule.</li>
+          <li><strong>Appreciated stock goes in whole.</strong> Contribute a low-basis position, avoid the capital gain entirely, and deduct fair market value — a double benefit a cash gift cannot produce.</li>
+          <li><strong>Bunching clears the standard deduction.</strong> Concentrating several years of giving into one year gets you over the itemizing threshold in that year and lets you take the standard deduction in the others.</li>
+          <li><strong>None of a private foundation's overhead.</strong> No 990-PF, no excise tax, no board, no minimum distribution requirement, and anonymity is available on any grant.</li>
+        </ul>
+      </div>
+      <div class="ledger-col con">
+        <h4><span class="sig">−</span>Structural disadvantage</h4>
+        <ul>
+          <li><strong>Irrevocable, and legally not yours.</strong> The sponsor takes ownership. Your role is advisory, and while recommendations are effectively always honored, the control is a courtesy rather than a right.</li>
+          <li><strong>AGI limits cap the deduction.</strong> Roughly 30% of AGI for appreciated property and 60% for cash, with a five-year carryforward for the excess.</li>
+          <li><strong>Two layers of fees.</strong> Sponsor administration plus the expense ratios of the underlying pools, charged for as long as the money sits.</li>
+          <li><strong>No payout requirement.</strong> Nothing forces the money out, which is convenient for you and the reason the vehicle draws recurring legislative attention.</li>
+          <li><strong>No private benefit permitted.</strong> It cannot satisfy a legally binding personal pledge, buy a gala table, or produce anything of value back to you.</li>
+        </ul>
+      </div>
+    </div>
+
 
     <div class="calc">
       <p class="scenario">You contribute appreciated stock to a DAF in a high-income year, then let the balance grow before grant-making.</p>
@@ -1400,6 +1672,27 @@
       <span class="acro">CRT</span>
     </div>
     <p class="tldr">Sell a concentrated, low-basis position without paying capital gains. Receive an income stream for life or a term. Remainder goes to charity.</p>
+    <div class="ledger">
+      <div class="ledger-col pro">
+        <h4><span class="sig">+</span>Structural advantage</h4>
+        <ul>
+          <li><strong>Sell without the capital-gains bill.</strong> The trust is tax-exempt, so a low-basis concentrated position can be liquidated inside it and the entire pre-tax proceeds reinvested and diversified.</li>
+          <li><strong>Immediate partial deduction.</strong> You deduct the present value of the charitable remainder in the funding year, while still receiving the income stream.</li>
+          <li><strong>A defined income stream.</strong> Payments run for life or a term up to 20 years, in a fixed dollar amount (CRAT) or a fixed percentage of annually revalued assets (CRUT).</li>
+          <li><strong>The asset leaves the estate.</strong> Funding removes the property from the taxable estate at the moment of transfer.</li>
+        </ul>
+      </div>
+      <div class="ledger-col con">
+        <h4><span class="sig">−</span>Structural disadvantage</h4>
+        <ul>
+          <li><strong>The remainder is gone.</strong> Heirs receive nothing from the trust. Replacing it usually requires a separate ILIT funded from the income stream, which adds cost and its own failure modes.</li>
+          <li><strong>Gain is deferred, not erased.</strong> Distributions carry out under four-tier ordering — ordinary income first, then capital gain — so the sheltered gain generally comes back to you as it is paid out.</li>
+          <li><strong>Design is boxed in.</strong> The remainder must be worth at least 10% at funding and the payout must run 5–50%, which constrains the structure at both low and high §7520 rates.</li>
+          <li><strong>Irrevocable and administered.</strong> A trustee, annual Form 5227, and periodic valuations, indefinitely.</li>
+        </ul>
+      </div>
+    </div>
+
 
     <div class="calc">
       <p class="scenario">You hold appreciated stock and want to diversify without absorbing the tax hit. The trust sells it, reinvests, and pays you.</p>
@@ -1451,6 +1744,28 @@
       <span class="acro">CLT</span>
     </div>
     <p class="tldr">The mirror image of a CRT — charity gets the annuity stream now, your heirs get the remainder. Best when the §7520 hurdle rate is low.</p>
+    <div class="ledger">
+      <div class="ledger-col pro">
+        <h4><span class="sig">+</span>Structural advantage</h4>
+        <ul>
+          <li><strong>Discounted transfer to heirs.</strong> The charitable lead interest is subtracted from the gift value, so the taxable remainder to the family can be reduced to near zero.</li>
+          <li><strong>It works best when rates are low.</strong> A low §7520 rate makes the charity's annuity stream worth more and the taxable remainder worth less — the mirror of a QPRT's preference for high rates.</li>
+          <li><strong>Excess growth escapes transfer tax.</strong> Everything the assets earn above the hurdle passes to the remainder beneficiaries outside the gift and estate system.</li>
+          <li><strong>The grantor version front-loads a deduction.</strong> A grantor CLT produces a large upfront income-tax deduction, useful against a single outsized income year.</li>
+        </ul>
+      </div>
+      <div class="ledger-col con">
+        <h4><span class="sig">−</span>Structural disadvantage</h4>
+        <ul>
+          <li><strong>Long lockup for the family.</strong> Heirs receive nothing until the term ends, which can be a decade or more.</li>
+          <li><strong>The grantor version has a recapture trap.</strong> Die during the term and the deduction is recaptured. The non-grantor version avoids that but gets no upfront deduction at all.</li>
+          <li><strong>Payments are mandatory.</strong> The charitable annuity must be paid on schedule regardless of performance, which can force liquidation of illiquid assets in a bad year.</li>
+          <li><strong>Awkward for generation-skipping.</strong> GST exemption allocation is unreliable at funding, which limits its use in dynasty planning.</li>
+          <li><strong>No basis step-up.</strong> The remainder passes with carryover basis.</li>
+        </ul>
+      </div>
+    </div>
+
 
     <div class="calc">
       <p class="scenario">You front-load a stream of giving while transferring the eventual remainder to your children at a discounted gift value.</p>
@@ -1498,6 +1813,29 @@
       <span class="acro">GRAT</span>
     </div>
     <p class="tldr">A short-term bet on appreciation. You get an annuity stream back equal to your contribution; anything above the IRS hurdle passes gift-tax-free.</p>
+    <div class="ledger">
+      <div class="ledger-col pro">
+        <h4><span class="sig">+</span>Structural advantage</h4>
+        <ul>
+          <li><strong>Tax-free transfer of excess growth.</strong> The grantor contributes assets and retains fixed annuity payments over a set term. Any appreciation above the IRS §7520 hurdle rate passes to the beneficiaries free of gift and estate tax.</li>
+          <li><strong>Zeroed-out gift.</strong> Set the annuity so its present value equals the contributed value plus assumed §7520 growth, and the taxable remainder is $0. No lifetime exemption is consumed.</li>
+          <li><strong>Limited downside.</strong> If the assets underperform the hurdle rate, the annuity payments simply return them to the grantor. No gift tax, no wasted exemption, only the cost of setting up and running the trust.</li>
+          <li><strong>Estate reduction through income taxes.</strong> As a grantor trust, the grantor pays the income and capital gains tax on trust earnings. Those payments are not treated as additional taxable gifts, so the trust compounds untouched while the grantor's taxable estate shrinks.</li>
+        </ul>
+      </div>
+      <div class="ledger-col con">
+        <h4><span class="sig">−</span>Structural disadvantage</h4>
+        <ul>
+          <li><strong>Mortality risk.</strong> The grantor must outlive the term. Death during the term pulls the assets back into the taxable estate and neutralizes the benefit.</li>
+          <li><strong>Hurdle rate risk.</strong> Underperformance produces nothing beyond the transaction costs and lost opportunity.</li>
+          <li><strong>No basis step-up.</strong> Assets passing to beneficiaries carry over the grantor's basis rather than receiving a step-up at death.</li>
+          <li><strong>Poor fit for generation-skipping transfers.</strong> GST exemption cannot be allocated until the term ends, which makes GRATs awkward for dynasty planning.</li>
+          <li><strong>Ongoing cash-flow and administrative burden.</strong> Annuity payments must be made on schedule, which can force in-kind distributions of illiquid assets, and the grantor absorbs the income tax bill each year.</li>
+          <li><strong>Legislative risk.</strong> Proposals to impose minimum terms and minimum remainder values have surfaced repeatedly.</li>
+        </ul>
+      </div>
+    </div>
+
 
     <div class="calc">
       <p class="scenario">You move a pre-catalyst asset (concentrated stock, pre-IPO equity) into a 2-year zeroed-out GRAT.</p>
@@ -1545,6 +1883,29 @@
       <span class="acro">IDGT</span>
     </div>
     <p class="tldr">"Defective" for income tax (you keep paying it) but effective for estate tax. Sell appreciating assets to it on a note. Growth above AFR escapes your estate.</p>
+    <div class="ledger">
+      <div class="ledger-col pro">
+        <h4><span class="sig">+</span>Structural advantage</h4>
+        <ul>
+          <li><strong>The sale is not a taxable event.</strong> Because the trust is the grantor for income-tax purposes, selling assets to it triggers no capital gain and the note interest is not taxable income to the grantor.</li>
+          <li><strong>A lower hurdle than a GRAT.</strong> The transfer only needs to outrun the AFR, which is typically below the §7520 rate a GRAT must clear.</li>
+          <li><strong>The tax burn works both ways.</strong> The grantor pays the trust's income tax without it counting as an additional gift, so the trust compounds gross while the taxable estate is depleted every year.</li>
+          <li><strong>Built for generation-skipping.</strong> GST exemption can be allocated at funding, so unlike a GRAT the structure works for dynasty planning from day one.</li>
+          <li><strong>Discounts can be layered in.</strong> Non-marketable or minority interests can be sold at a valuation discount, multiplying the leverage of the seed gift.</li>
+        </ul>
+      </div>
+      <div class="ledger-col con">
+        <h4><span class="sig">−</span>Structural disadvantage</h4>
+        <ul>
+          <li><strong>It requires a seed gift.</strong> Conventionally 10% of the sale value, funded with lifetime exemption. There is no zeroed-out version.</li>
+          <li><strong>No statutory safe harbor.</strong> The structure rests on private letter rulings and long practice rather than a code section. A GRAT has §2702; an IDGT has convention.</li>
+          <li><strong>Underperformance is not self-correcting.</strong> A GRAT that misses simply returns the assets. An IDGT that misses leaves a trust owing a note it cannot service, with the shortfall borne by the family.</li>
+          <li><strong>The tax burn is real cash.</strong> The grantor writes a check for the trust's income tax every year, and grantor-trust status must be maintained and monitored to keep the structure working.</li>
+          <li><strong>No basis step-up, and legislative exposure.</strong> Assets carry over the grantor's basis, and proposals to pull grantor trusts back into the taxable estate recur in most budget cycles.</li>
+        </ul>
+      </div>
+    </div>
+
 
     <div class="calc">
       <p class="scenario">After a 10% seed gift, you sell $10M of an appreciating asset to the trust for a 9-year balloon note at the AFR.</p>
@@ -1592,6 +1953,28 @@
       <span class="acro">SLAT</span>
     </div>
     <p class="tldr">Lock in today's exemption while preserving indirect access through your spouse. The workhorse vehicle for HNW couples in 2026.</p>
+    <div class="ledger">
+      <div class="ledger-col pro">
+        <h4><span class="sig">+</span>Structural advantage</h4>
+        <ul>
+          <li><strong>Locks in the exemption while it exists.</strong> The $15M per-person exemption is a use-it-or-lose-it feature of current law. A SLAT converts it into a completed gift now.</li>
+          <li><strong>Access without inclusion.</strong> The beneficiary spouse can receive distributions, so the household retains indirect use of assets that are legally outside the donor's estate.</li>
+          <li><strong>Grantor status compounds the benefit.</strong> The donor pays the trust's income tax, so the trust grows gross while the taxable estate shrinks — without an additional gift.</li>
+          <li><strong>Dynastic and protected.</strong> It can be made GST-exempt for multi-generational use and typically carries meaningful creditor and divorce protection for beneficiaries.</li>
+        </ul>
+      </div>
+      <div class="ledger-col con">
+        <h4><span class="sig">−</span>Structural disadvantage</h4>
+        <ul>
+          <li><strong>Divorce or death ends the access.</strong> The whole benefit runs through the spouse. If the marriage ends or the beneficiary spouse dies first, the donor has made an irrevocable gift to a trust they cannot touch.</li>
+          <li><strong>The reciprocal trust doctrine.</strong> Two spouses creating mirror-image SLATs risk having them unwound and pulled back into both estates. The trusts must differ in substance — terms, timing, beneficiaries, powers — not just in wording.</li>
+          <li><strong>It spends the exemption up front.</strong> The strategy is a bet that the exemption will fall. If it does not, you have consumed it early and forgone the step-up on those assets for no transfer-tax gain.</li>
+          <li><strong>No basis step-up.</strong> Assets pass with carryover basis, which can cost the family more in income tax than the estate tax it saved on a modest estate.</li>
+          <li><strong>The access is a legal fiction that must be respected.</strong> Distributions belong to the spouse. Treating the trust as a joint checkbook is exactly what invites inclusion.</li>
+        </ul>
+      </div>
+    </div>
+
 
     <div class="calc">
       <p class="scenario">You use your full $15M exemption to fund a SLAT for the benefit of your spouse and descendants. Assets grow outside your estate.</p>
@@ -1635,6 +2018,27 @@
       <span class="acro">QPRT</span>
     </div>
     <p class="tldr">Transfer a residence at a discounted gift value by retaining the right to live in it for a term of years.</p>
+    <div class="ledger">
+      <div class="ledger-col pro">
+        <h4><span class="sig">+</span>Structural advantage</h4>
+        <ul>
+          <li><strong>The retained interest discounts the gift.</strong> Keeping the right to live in the residence for a term of years reduces the present value of what you are giving, often by half or more.</li>
+          <li><strong>It prefers high §7520 rates.</strong> Almost alone among these structures, a QPRT gets better as rates rise, because the retained use interest is worth more.</li>
+          <li><strong>Appreciation escapes the estate.</strong> All growth in the home's value after funding accrues outside the taxable estate.</li>
+          <li><strong>You keep living there.</strong> Unlike most completed gifts, the donor retains actual possession throughout the term.</li>
+        </ul>
+      </div>
+      <div class="ledger-col con">
+        <h4><span class="sig">−</span>Structural disadvantage</h4>
+        <ul>
+          <li><strong>Mortality risk is total.</strong> Die during the term and the full date-of-death value comes back into the estate. The planning is undone, not partially reduced.</li>
+          <li><strong>You become a tenant.</strong> After the term, remaining in the house requires paying fair market rent to the beneficiaries. That further reduces the estate, but it surprises people who were not told.</li>
+          <li><strong>No step-up, and the §121 exclusion is lost.</strong> Heirs take carryover basis in an asset that may hold decades of gain, and the $250,000/$500,000 primary-residence exclusion is generally unavailable on a later sale.</li>
+          <li><strong>One illiquid asset, hard to unwind.</strong> Refinancing, selling, or moving mid-term is complicated and sometimes impossible without collapsing the structure.</li>
+        </ul>
+      </div>
+    </div>
+
 
     <div class="calc">
       <p class="scenario">You move a Manhattan apartment into a QPRT, retain a 15-year right of occupancy. After the term, it passes to your children.</p>
@@ -1682,6 +2086,28 @@
       <span class="acro">ILIT</span>
     </div>
     <p class="tldr">Hold a life insurance policy outside your estate. The death benefit funds liquidity for estate tax — without itself being taxed.</p>
+    <div class="ledger">
+      <div class="ledger-col pro">
+        <h4><span class="sig">+</span>Structural advantage</h4>
+        <ul>
+          <li><strong>The death benefit is outside the estate.</strong> Proceeds are both income-tax-free and, held properly, estate-tax-free — liquidity arriving exactly when the estate tax comes due.</li>
+          <li><strong>Premiums can be funded without exemption.</strong> Crummey withdrawal rights convert premium gifts into present interests eligible for the annual exclusion, so the policy can be funded without touching lifetime exemption.</li>
+          <li><strong>It solves the illiquidity problem directly.</strong> Estates concentrated in a business, real estate, or a single stock otherwise face a forced sale within nine months. The ILIT is cash on time.</li>
+          <li><strong>GST-exempt and creditor-protected.</strong> It can be structured to serve multiple generations and shields the proceeds from beneficiaries' creditors.</li>
+        </ul>
+      </div>
+      <div class="ledger-col con">
+        <h4><span class="sig">−</span>Structural disadvantage</h4>
+        <ul>
+          <li><strong>Genuinely irrevocable.</strong> You cannot borrow the cash value, change the ownership, or reclaim the policy if circumstances change.</li>
+          <li><strong>The three-year lookback.</strong> Transferring an existing policy into the trust pulls it back into the estate under §2035 if death occurs within three years. Only a trust-purchased policy avoids this cleanly.</li>
+          <li><strong>Crummey notices must actually be sent.</strong> Every year, in writing, documented. Administrative lapse is the most common way these trusts fail, and it is discovered at audit.</li>
+          <li><strong>Policy performance is a live risk.</strong> An underfunded universal life policy can lapse decades in, destroying the plan at the moment it was supposed to work.</li>
+          <li><strong>Premiums are a standing obligation.</strong> The gifting and funding cycle must continue for as long as the policy does.</li>
+        </ul>
+      </div>
+    </div>
+
 
     <div class="calc">
       <p class="scenario">Your estate is illiquid (operating business, real estate). The ILIT-owned policy generates cash to pay the estate tax bill without forcing a fire sale.</p>
@@ -1725,6 +2151,28 @@
       <span class="acro">GST-EXEMPT</span>
     </div>
     <p class="tldr">Fund once with GST exemption. The trust compounds for generations — children, grandchildren, great-grandchildren — without paying transfer tax at each death.</p>
+    <div class="ledger">
+      <div class="ledger-col pro">
+        <h4><span class="sig">+</span>Structural advantage</h4>
+        <ul>
+          <li><strong>One exemption allocation covers the whole term.</strong> Allocate GST exemption once at funding and the trust escapes transfer tax at every subsequent generational death, for as long as it runs.</li>
+          <li><strong>Compounding across lifetimes.</strong> The advantage is arithmetic: avoiding a 40% haircut every 30 years is worth vastly more than any single-generation structure.</li>
+          <li><strong>Real protection for descendants.</strong> Assets held in trust are generally shielded from beneficiaries' creditors, divorcing spouses, and their own judgment.</li>
+          <li><strong>Situs is a choice.</strong> South Dakota, Nevada, Delaware, and Alaska offer no rule against perpetuities and no state income tax on accumulated trust income.</li>
+        </ul>
+      </div>
+      <div class="ledger-col con">
+        <h4><span class="sig">−</span>Structural disadvantage</h4>
+        <ul>
+          <li><strong>You are binding people who do not exist yet.</strong> The terms are fixed by someone who cannot know their circumstances. Decanting and trust protectors help, but only within limits.</li>
+          <li><strong>No step-up, ever.</strong> Carryover basis persists across every generation. Over a century, the accumulated income-tax cost can exceed the transfer tax avoided.</li>
+          <li><strong>Compressed trust brackets.</strong> Accumulated income hits the top federal rate above roughly $16,000, so distribution policy is driven by tax mechanics rather than family need.</li>
+          <li><strong>Institutional cost, compounding too.</strong> A corporate trustee is effectively required over that horizon, and the fee runs for the life of the trust.</li>
+          <li><strong>Situs must be maintained, and the law can move.</strong> Administrative connection to the chosen state has to be real and ongoing, and perpetual GST exemption is a recurring legislative target.</li>
+        </ul>
+      </div>
+    </div>
+
 
     <div class="calc">
       <p class="scenario">You fund a perpetual trust in South Dakota or Delaware with your full GST exemption. The math compares this against the same assets surviving repeated generational taxation.</p>
@@ -1774,6 +2222,29 @@
       <span class="acro">PPLI</span>
     </div>
     <p class="tldr">Wrap a hedge fund, PE allocation, or high-turnover strategy inside a life-insurance chassis. Growth compounds <em>tax-free</em>; withdrawals come out as policy loans (no tax); at death the entire value passes income-tax-free as a death benefit. The insurance wrapper converts ordinary income and short-term gains into never-taxed wealth.</p>
+    <div class="ledger">
+      <div class="ledger-col pro">
+        <h4><span class="sig">+</span>Structural advantage</h4>
+        <ul>
+          <li><strong>It fixes the worst tax profile in the portfolio.</strong> Hedge funds, credit, and high-turnover strategies throw off short-term gains and ordinary income. Inside the policy, none of it is taxed.</li>
+          <li><strong>Access without realization.</strong> Policy loans provide liquidity without a taxable event, and the loan is settled from the death benefit.</li>
+          <li><strong>Income-tax-free at death, estate-tax-free if held right.</strong> The death benefit passes free of income tax, and owned by an ILIT it is outside the taxable estate as well.</li>
+          <li><strong>Institutional economics.</strong> Unlike retail policies, PPLI is typically sold with low or no commission and transparent, unbundled mortality and expense charges.</li>
+        </ul>
+      </div>
+      <div class="ledger-col con">
+        <h4><span class="sig">−</span>Structural disadvantage</h4>
+        <ul>
+          <li><strong>The investor control doctrine.</strong> You may not direct the underlying investments. Too much influence and the IRS treats the assets as owned by you, collapsing the entire structure retroactively.</li>
+          <li><strong>Diversification requirements constrain the strategy.</strong> §817(h) limits how concentrated the underlying account can be, which rules out some of the strategies people most want to wrap.</li>
+          <li><strong>High entry thresholds.</strong> Accredited investor or qualified purchaser status and premium commitments typically in the millions across several years.</li>
+          <li><strong>Surrender is the failure mode.</strong> Early exit means surrender charges, and any surrender taxes the entire gain as ordinary income — the opposite of the outcome you bought.</li>
+          <li><strong>The MEC line governs everything.</strong> Fund past the seven-pay limit and loans become taxable distributions, which removes the point of the wrapper.</li>
+          <li><strong>It needs a long horizon to beat a taxable account.</strong> Insurance costs are a real drag. Against a low-turnover equity portfolio already taxed at capital-gains rates, the wrapper can simply lose.</li>
+        </ul>
+      </div>
+    </div>
+
 
     <div class="calc">
       <p class="scenario">You're an accredited investor allocating to alternatives that generate high ordinary income or short-term gains. Compare the same strategy inside a PPLI wrapper vs. a taxable account. The wrapper eliminates annual tax drag; death benefit passes income-tax-free.</p>
@@ -1832,6 +2303,28 @@
       <span class="acro">CASH VALUE · LIRP</span>
     </div>
     <p class="tldr">Whole life, universal life, and indexed UL policies build a <em>cash value</em> that grows tax-deferred. Borrow against it tax-free. At death, the entire value passes income-tax-free as a death benefit. The mechanics: overfund a permanent policy (staying under the MEC line), let it compound, then access it via loans — never a taxable event.</p>
+    <div class="ledger">
+      <div class="ledger-col pro">
+        <h4><span class="sig">+</span>Structural advantage</h4>
+        <ul>
+          <li><strong>Tax-deferred build-up with non-taxable access.</strong> Cash value compounds without annual tax, and loans against it are not income.</li>
+          <li><strong>The death benefit is income-tax-free.</strong> Whatever remains passes to beneficiaries outside the income tax entirely.</li>
+          <li><strong>A floor, not just a wrapper.</strong> Whole life dividends and indexed UL floors provide a principal-protected, low-correlation component that a brokerage account cannot replicate.</li>
+          <li><strong>Creditor protection in many states.</strong> Cash value and death benefit enjoy statutory protection that varies by state but is often substantial.</li>
+        </ul>
+      </div>
+      <div class="ledger-col con">
+        <h4><span class="sig">−</span>Structural disadvantage</h4>
+        <ul>
+          <li><strong>Costs are front-loaded and large.</strong> Commissions and surrender charges mean the early years frequently show a negative return on money paid in.</li>
+          <li><strong>The MEC line is a cliff.</strong> Overfund past the seven-pay test and every loan becomes a taxable distribution, potentially with a 10% penalty.</li>
+          <li><strong>Loans compound against you.</strong> Interest accrues on borrowed cash value. An over-loaned policy that lapses triggers tax on the full gain at a moment when there is no cash to pay it — the classic blow-up.</li>
+          <li><strong>The carrier holds the dials.</strong> Indexed UL caps, participation rates, and charges are adjustable by the insurer after issue. The illustration you were shown is not a contract.</li>
+          <li><strong>Illustrations are marketing.</strong> Projected values assume returns and cost structures that frequently do not hold. Ask for the guaranteed column, not the illustrated one.</li>
+        </ul>
+      </div>
+    </div>
+
 
     <div class="calc">
       <p class="scenario">You fund a permanent life policy with annual premiums, and the cash value grows at a net crediting rate. After the accumulation phase, you access cash through policy loans rather than withdrawals.</p>
@@ -1890,6 +2383,28 @@
       <span class="acro">TRUST LENDING · MARGIN · PALs</span>
     </div>
     <p class="tldr">The richest tax strategy isn't a deduction — it's <em>never selling</em>. Buy appreciating assets, borrow against them for spending cash (loans aren't income), and hold until death when the step-up erases the gain. Trusts, margin, and pledged-asset lines all serve the same logic.</p>
+    <div class="ledger">
+      <div class="ledger-col pro">
+        <h4><span class="sig">+</span>Structural advantage</h4>
+        <ul>
+          <li><strong>Borrowing is not a realization.</strong> Loan proceeds are not income. Spending against an appreciated position produces cash without producing a tax bill.</li>
+          <li><strong>Death erases the deferred gain.</strong> The step-up in basis converts a lifetime of deferral into permanent forgiveness. The strategy's name is also its exit.</li>
+          <li><strong>The position keeps compounding.</strong> Nothing is sold, so the full pre-tax balance stays invested — the same effect that makes tax deferral valuable, taken to its limit.</li>
+          <li><strong>Interest may be deductible.</strong> Properly traced investment interest can offset net investment income, lowering the real cost of the borrowing.</li>
+        </ul>
+      </div>
+      <div class="ledger-col con">
+        <h4><span class="sig">−</span>Structural disadvantage</h4>
+        <ul>
+          <li><strong>Collateral risk is the whole story.</strong> A drawdown can trigger a margin call precisely when prices are worst, forcing the sale the strategy exists to avoid — and at a loss.</li>
+          <li><strong>The spread is not guaranteed.</strong> It works only while the after-tax borrowing cost stays below expected return. Floating rates can invert that quietly.</li>
+          <li><strong>Concentration goes unaddressed.</strong> Never selling means never diversifying. The tax logic and the risk-management logic point in opposite directions.</li>
+          <li><strong>It depends on the step-up surviving.</strong> Carryover-basis and mark-at-death proposals recur regularly. The strategy's payoff is a bet on one provision of law lasting the rest of your life.</li>
+          <li><strong>It does nothing about estate tax.</strong> The step-up erases income tax, not the 40% transfer tax. For a taxable estate, buy-borrow-die still needs a trust structure underneath it.</li>
+        </ul>
+      </div>
+    </div>
+
 
     <div class="calc">
       <p class="scenario">You hold appreciated assets in a brokerage or trust and borrow against them at a securities-backed lending rate instead of selling and paying capital gains. Compare the after-tax outcomes: sell vs. borrow and let the step-up erase the basis at death.</p>
@@ -2133,7 +2648,7 @@
     <p><strong>Math is illustrative.</strong> The actuarial calculations underlying real CRTs, CLTs, GRATs, and QPRTs use IRS mortality tables and present-value math that this guide approximates for intuition.</p>
     <p><strong>The income-tax map</strong> uses 2026 federal brackets (IRS Rev. Proc. 2025-32) and a simplified base-to-top state model; it ignores AMT, NIIT thresholds, sourcing rules, phaseouts, and the audit risk of a contested domicile change. Directional, not a return.</p>
     <p><strong>Legal disclaimer.</strong> This entire document is a personal project provided solely for illustrative, educational, and recreational purposes. It does not constitute tax, legal, investment, accounting, financial, or other professional advice, and should not be relied upon for any transaction, filing, estate plan, investment decision, or other real-world action. The models, calculations, assumptions, examples, and scenarios are simplified, may be incomplete or outdated, and may not reflect the law or circumstances applicable to any particular person. No professional, advisory, fiduciary, attorney-client, accountant-client, or other relationship is created by use of this site. Consult appropriately qualified professionals before making any decision.</p>
-    <p class="verstamp"><strong>Tax &amp; Estate Basics — v2.0</strong> · build 2026-08-28T05:31 · supersedes v1.0. Changes in v2: added PPLI (§18), Life Insurance as a Tax Wrapper (§19), Buy-Borrow-Die / trust lending strategies (§20), updated flowchart, glossary, and rules reference.</p>
+    <p class="verstamp"><strong>Tax &amp; Estate Basics — v3.0</strong> · build 2026-08-30T15:08 · 30 August 2026, 11:08 AM ET · supersedes v2.0 (build 2026-08-28T05:31). Changes in v3: added a structural advantage / disadvantage breakout to all twenty sections (§1–20), placed above each calculator; new ledger component and color tokens. v2 added PPLI (§18), Life Insurance as a Tax Wrapper (§19), and Buy-Borrow-Die (§20).</p>
   </footer>
 
 </div>
